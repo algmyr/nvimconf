@@ -1,7 +1,8 @@
 return {
   "ellisonleao/gruvbox.nvim",
   {
-    dir = "~/git/vim-wombat-lua",
+    "algmyr/vim-wombat-lua",
+    dev = true,
     dependencies = { "tjdevries/colorbuddy.nvim" },
     priority = 1000,
     config = function()
