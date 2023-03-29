@@ -1,8 +1,8 @@
 return {
   "machakann/vim-highlightedyank",
   {
-    "norcalli/nvim-colorizer.lua",
-    opt = {},
+    "NvChad/nvim-colorizer.lua",
+    opts = {},
   },
   "numirias/semshi",
 }
