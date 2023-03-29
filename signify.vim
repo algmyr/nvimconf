@@ -30,8 +30,14 @@ function ChangeTargetGitCommit(older_or_younger)
 
 endfunction
 
-nnoremap [r :SignifyOlder<cr>
-nnoremap ]r :SignifyNewer<cr>
+nnoremap [r :SignifyOlder<CR>
+nnoremap ]r :SignifyNewer<CR>
+noremap <leader>sd :SignifyHunkDiff<cr>
+noremap <leader>su :SignifyHunkUndo<cr>
+noremap <leader>sf :SignifyFold!<cr>
+noremap <leader>sh :SignifyToggleHighlight<cr>
+noremap <leader>sr :SignifyRefresh<cr>
+noremap <leader>st :SignifyToggle<cr>
 
 let g:signify_sign_add               = '▏'  " '+'
 let g:signify_sign_delete            = '▁'  " '_'

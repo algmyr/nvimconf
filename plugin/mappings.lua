@@ -5,8 +5,8 @@ nmap('<leader>/', ':nohlsearch<CR>')
 nmap('<leader>bk', ':bp <BAR> bd #<cr>')
 
 -- Other mappings
-nmap('-', 'ddp')
-nmap('_', 'kddpk')
+nmap('-', '"ldd"lp')
+nmap('_', 'k"ldd"lpk')
 vmap('<', '<gv')
 vmap('>', '>gv')
 nmap('Q', '@q')

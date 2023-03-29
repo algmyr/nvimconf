@@ -1,5 +1,5 @@
 return {
-  enable=false,
+  enabled = false,
   "rcarriga/nvim-dap-ui",
   dependencies = {
     "mfussenegger/nvim-dap",

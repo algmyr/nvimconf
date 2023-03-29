@@ -1,7 +1,7 @@
 vim.g.mapleader = ","
 vim.g.maplocalleader = "-"
 
-package.path = package.path .. "/home/algmyr/.config/nvim/lua/%.lua"
+package.path = package.path .. ";~/.config/nvim/lua/%.lua"
 
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -23,4 +23,7 @@ require("lazy").setup({
   dev = {
     path = "~/git",
   },
+  change_detection = {
+    notify = false,
+  }
 })
