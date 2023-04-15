@@ -27,3 +27,8 @@ end
 function imap(lhs, rhs, opts)
   map("i", lhs, rhs, opts)
 end
+
+function user_command(name, fun, opts)
+  -- preview is a thing, interesting
+  vim.api.nvim_create_user_command(name, fun, opts or {})
+end
