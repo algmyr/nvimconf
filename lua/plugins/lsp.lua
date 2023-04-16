@@ -68,6 +68,24 @@ return {
     url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     config = true,
   },
+  {
+    "dnlhc/glance.nvim",
+    config = function()
+      local context_len = 15;
+      require('glance').setup({
+        height = 2*context_len + 1 + 1,
+        preview_win_opts = {
+          cursorline = true,
+          number = true,
+          wrap = false,
+        }
+      })
+      nmap('gD', '<CMD>Glance definitions<CR>')
+      nmap('gR', '<CMD>Glance references<CR>')
+      nmap('gY', '<CMD>Glance type_definitions<CR>')
+      nmap('gM', '<CMD>Glance implementations<CR>')
+    end,
+  },
 }
 
 -- vim: set fdm=marker:
