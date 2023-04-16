@@ -4,6 +4,7 @@ return {
   {
     "akinsho/bufferline.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    cond = not vim.g.started_by_firenvim,
     config = function() -- {{{
       require "mapping"
 
@@ -28,6 +29,7 @@ return {
   },
   {
     "nvim-lualine/lualine.nvim",
+    cond = not vim.g.started_by_firenvim,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function() -- {{{
       local custom_wombat = require "lualine.themes.wombat"

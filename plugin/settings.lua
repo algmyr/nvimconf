@@ -1,4 +1,4 @@
-vim.g.python_recommended_style = 0
+--vim.g.python_recommended_style = 0
 vim.g.rust_recommended_style = 0
 
 vim.o.clipboard = 'unnamedplus'
@@ -80,16 +80,22 @@ vim.o.foldtext = 'v:lua.custom_fold_text()'
 vim.o.signcolumn = 'auto:1'
 vim.o.foldcolumn = 'auto'
 vim.o.fillchars = 'foldclose:═,foldopen:╤,foldsep:│,fold: '
---vim.o.fillchars = 'foldclose:,foldopen:,foldsep:│,fold: '
---vim.o.statuscolumn = '%=%l%{&number?" ":""}%C%s'
 
---vim.o.statuscolumn = '%='
---                      .. '%@v:lua.ScLa@%l'   -- Line number with callback.
---                      .. '%{&number?" ":""}' -- Add space if number is used.
---                      .. '%@v:lua.ScFa@%C'   -- Fold column with callback.
---                      -- If folds but no sign gutter, add a space before code.
---                      .. '%{v:lua.has_fold() && !v:lua.sign_column_active() ? " " : ""}'
---                      .. '%@v:lua.ScSa@%s' -- Sign column with callback.
+if vim.g.started_by_firenvim == true then
+  vim.o.laststatus = 0
+else
+  vim.o.laststatus = 2
+end
+
+vim.cmd[[
+function! SetFontSizeFirenvim(timer)
+    set guifont=FiraCode:h10
+endfunction
+
+if exists('g:started_by_firenvim')
+    call timer_start(3000, function("SetFontSizeFirenvim"))
+endif]]
+
 
 -- Hacky sign stuff.
 local signs = {
