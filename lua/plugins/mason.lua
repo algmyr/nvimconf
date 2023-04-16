@@ -4,14 +4,21 @@ return {
   { "williamboman/mason.nvim", opts = {} },
   {
     "williamboman/mason-lspconfig.nvim",
-    dependencies = { "simrat39/rust-tools.nvim", "williamboman/mason.nvim" },
+    dependencies = {
+      "simrat39/rust-tools.nvim",
+      "williamboman/mason.nvim",
+      "ray-x/lsp_signature.nvim",
+    },
     config = function() -- {{{
-      require("mason-lspconfig").setup()
+      local mason_lspconfig = require("mason-lspconfig")
+      mason_lspconfig.setup()
+      local lspconfig = require("lspconfig")
+      local lsp_defaults = lspconfig.util.default_config
 
       -- Use an on_attach function to only map the following keys
       -- after the language server attaches to the current buffer
-      local on_attach = function(client, bufnr)
-        require("lsp_signature").on_attach(signature_setup, bufnr)
+      lsp_defaults.on_attach = function(_, bufnr)
+        require("lsp_signature").on_attach({}, bufnr)
 
         -- Enable completion triggered by <c-x><c-o>
         vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -39,14 +46,16 @@ return {
         end, bufopts)
       end
 
+      lsp_defaults.capabilities = require("cmp_nvim_lsp").default_capabilities()
+
       -- Auto setup
-      require("mason-lspconfig").setup_handlers {
+      mason_lspconfig.setup_handlers {
         -- The first entry (without a key) will be the default handler
         -- and will be called for each installed server that doesn't have
         -- a dedicated handler.
         function(server_name) -- default handler (optional)
           require("lspconfig")[server_name].setup {
-            on_attach = on_attach,
+            on_attach = lsp_defaults.on_attach,
           }
         end,
         -- Next, you can provide a dedicated handler for specific servers.
@@ -54,7 +63,7 @@ return {
         ["rust_analyzer"] = function()
           require("rust-tools").setup {
             server = {
-              on_attach = on_attach,
+              on_attach = lsp_defaults.on_attach,
             },
             tools = { -- rust-tools options
               -- These apply to the default RustSetInlayHints command
