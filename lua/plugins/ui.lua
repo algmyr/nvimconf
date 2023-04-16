@@ -30,7 +30,10 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     cond = not vim.g.started_by_firenvim,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      "SmiteshP/nvim-navic",
+    },
     config = function() -- {{{
       local custom_wombat = require "lualine.themes.wombat"
 
@@ -44,7 +47,7 @@ return {
       local inactive_bg = "#32322f"
       local main_bg = "#242424"
 
-      function gen_theme(accent, bg)
+      local function gen_theme(accent, bg)
         local black = "#141413"
         local light_bg = "#32322f"
         --local norm_text = '#E3E0D7'
@@ -62,16 +65,58 @@ return {
       custom_wombat.command = gen_theme(command, main_bg)
       custom_wombat.inactive = gen_theme(nil, inactive_bg)
 
+      local navic = require("nvim-navic")
       require("lualine").setup {
         options = {
           theme = custom_wombat,
           section_separators = { left = "", right = "" },
-          --section_separators = { left = '▌', right = '▐' },
           component_separators = { left = "", right = "" },
         },
+        sections = {
+          lualine_a = {'mode'},
+          lualine_b = {'branch', 'diff', 'diagnostics'},
+          lualine_c = {
+            'filename',
+            {
+              function()
+                  return navic.get_location()
+              end,
+              cond = function()
+                  return navic.is_available()
+              end
+            },
+          },
+          lualine_x = {'encoding', 'fileformat', 'filetype'},
+          lualine_y = {'progress'},
+          lualine_z = {'location'}
+        },
+        inactive_sections = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_c = {
+            'filename',
+          },
+          lualine_x = {'location'},
+          lualine_y = {},
+          lualine_z = {}
+        },
+        tabline = {},
+        winbar = {},
+        inactive_winbar = {},
+        extensions = {}
       }
     end, -- }}}
   },
+  {
+    'SmiteshP/nvim-navic',
+    dependencies = "neovim/nvim-lspconfig",
+    config = function()
+      local navic = require("nvim-navic")
+      navic.setup {
+        separator = "  "
+      }
+    end
+  }
 }
 
 -- vim: set fdm=marker:

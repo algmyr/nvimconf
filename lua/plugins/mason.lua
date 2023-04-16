@@ -7,6 +7,7 @@ return {
     dependencies = {
       "simrat39/rust-tools.nvim",
       "williamboman/mason.nvim",
+      "SmiteshP/nvim-navic",
       "ray-x/lsp_signature.nvim",
     },
     config = function() -- {{{
@@ -17,8 +18,9 @@ return {
 
       -- Use an on_attach function to only map the following keys
       -- after the language server attaches to the current buffer
-      lsp_defaults.on_attach = function(_, bufnr)
+      lsp_defaults.on_attach = function(client, bufnr)
         require("lsp_signature").on_attach({}, bufnr)
+        require("nvim-navic").attach(client, bufnr)
 
         -- Enable completion triggered by <c-x><c-o>
         vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
