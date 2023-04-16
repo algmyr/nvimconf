@@ -13,7 +13,7 @@ return {
         json = require("formatter.filetypes.json").jq,
         lua = require("formatter.filetypes.lua").stylua,
         python = {
-          require("formatter.filetypes.python").yapf,
+          require("formatter.filetypes.python").black,
           require("formatter.filetypes.python").isort,
         },
         rust = {
