@@ -46,7 +46,7 @@ return {
       }
     end, -- }}}
   },
-  "ray-x/lsp_signature.nvim",
+  --"ray-x/lsp_signature.nvim",
   {
     "kosayoda/nvim-lightbulb",
     opts = { autocmd = { enabled = true } },

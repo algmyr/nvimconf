@@ -19,7 +19,7 @@ return {
       -- Use an on_attach function to only map the following keys
       -- after the language server attaches to the current buffer
       lsp_defaults.on_attach = function(client, bufnr)
-        require("lsp_signature").on_attach({}, bufnr)
+        --require("lsp_signature").on_attach({}, bufnr)
         require("nvim-navic").attach(client, bufnr)
 
         -- Enable completion triggered by <c-x><c-o>
@@ -28,7 +28,7 @@ return {
         -- Mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         local bufopts = { buffer = bufnr }
-        nmap("gD", vim.lsp.buf.declaration, bufopts)
+        --nmap("gD", vim.lsp.buf.declaration, bufopts)
         nmap("gd", vim.lsp.buf.definition, bufopts)
         nmap("K", vim.lsp.buf.hover, bufopts)
         nmap("gi", vim.lsp.buf.implementation, bufopts)
