@@ -86,7 +86,16 @@ return {
               end,
             },
           },
-          lualine_x = { "encoding", "fileformat", "filetype" },
+          lualine_x = {
+            {
+              require("noice").api.statusline.mode.get,
+              cond = require("noice").api.statusline.mode.has,
+              color = { fg = "#ff9e64" },
+            },
+            "encoding",
+            "fileformat",
+            "filetype",
+          },
           lualine_y = { "progress" },
           lualine_z = { "location" },
         },
@@ -120,7 +129,7 @@ return {
   {
     "folke/noice.nvim",
     config = function()
-      require("noice").setup({
+      require("noice").setup {
         lsp = {
           -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
           override = {
@@ -135,9 +144,13 @@ return {
           command_palette = true, -- position the cmdline and popupmenu together
           long_message_to_split = true, -- long messages will be sent to a split
           inc_rename = false, -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = false, -- add a border to hover docs and signature help
+          lsp_doc_border = true, -- add a border to hover docs and signature help
         },
-      })
+        -- Classic cmdline
+        cmdline = {
+          view = "cmdline",
+        },
+      }
     end,
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
