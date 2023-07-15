@@ -1,6 +1,11 @@
 vim.g.mapleader = ","
 vim.g.maplocalleader = "-"
 
+-- This is a hack, but apparently if you don't source early
+-- you run into issues with packages using the default config.
+vim.cmd("source ~/.config/nvim/plugin/mappings.lua")
+vim.cmd("source ~/.config/nvim/plugin/settings.lua")
+
 package.path = package.path .. ";~/.config/nvim/lua/%.lua"
 
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
