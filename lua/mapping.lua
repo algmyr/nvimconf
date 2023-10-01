@@ -1,5 +1,5 @@
-function map(mode, lhs, rhs, opts)
-  local options = { noremap = true, silent = true }
+function map(mode, lhs, rhs, desc, opts)
+  local options = { noremap = true, silent = true, desc = desc }
   if opts then
       options = vim.tbl_extend("force", options, opts)
   end
@@ -8,24 +8,24 @@ function map(mode, lhs, rhs, opts)
   --vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-function nmap(lhs, rhs, opts)
-  map("n", lhs, rhs, opts)
+function nmap(lhs, rhs, desc, opts)
+  map("n", lhs, rhs, desc, opts)
 end
 
-function vmap(lhs, rhs, opts)
-  map("v", lhs, rhs, opts)
+function vmap(lhs, rhs, desc, opts)
+  map("v", lhs, rhs, desc, opts)
 end
 
-function xmap(lhs, rhs, opts)
-  map("x", lhs, rhs, opts)
+function xmap(lhs, rhs, desc, opts)
+  map("x", lhs, rhs, desc, opts)
 end
 
-function smap(lhs, rhs, opts)
-  map("s", lhs, rhs, opts)
+function smap(lhs, rhs, desc, opts)
+  map("s", lhs, rhs, desc, opts)
 end
 
-function imap(lhs, rhs, opts)
-  map("i", lhs, rhs, opts)
+function imap(lhs, rhs, desc, opts)
+  map("i", lhs, rhs, desc, opts)
 end
 
 function user_command(name, fun, opts)

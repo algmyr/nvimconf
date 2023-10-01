@@ -15,10 +15,10 @@ return {
         },
       }
 
-      nmap("<leader>n", ":BufferLineCyclePrev<cr>")
-      nmap("<leader>m", ":BufferLineCycleNext<cr>")
-      nmap("<leader>N", ":BufferLineMovePrev<cr>")
-      nmap("<leader>M", ":BufferLineMoveNext<cr>")
+      nmap("<leader>n", ":BufferLineCyclePrev<cr>", "Go to buffer left")
+      nmap("<leader>m", ":BufferLineCycleNext<cr>", "Go to buffer right")
+      nmap("<leader>N", ":BufferLineMovePrev<cr>", "Move buffer left")
+      nmap("<leader>M", ":BufferLineMoveNext<cr>", "Move buffer right")
     end, -- }}}
   },
   {

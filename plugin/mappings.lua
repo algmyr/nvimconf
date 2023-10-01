@@ -1,35 +1,35 @@
 require 'mapping'
 
-nmap('<leader>/', ':nohlsearch<CR>')
+nmap('<leader>/', ':nohlsearch<CR>', 'Unhighlight search')
 
-nmap('<leader>bk', ':bp <BAR> bd #<cr>')
+nmap('<leader>bk', ':bp <BAR> bd #<cr>', 'Kill buffer')
 
 -- Other mappings
-nmap('-', '"ldd"lp')
-nmap('_', 'k"ldd"lpk')
-vmap('<', '<gv')
-vmap('>', '>gv')
-nmap('Q', '@q')
+nmap('-', '"ldd"lp', 'Move line down')
+nmap('_', 'k"ldd"lpk', 'Move line up')
+vmap('<', '<gv', 'Dedent selection')
+vmap('>', '>gv', 'Indent selection')
+nmap('Q', '@q', 'Replay the q macro')
 
-nmap('<leader>sf', ':SignifyFold!<CR>')
-nmap('<leader>su', ':SignifyHunkUndo<CR>')
-nmap('<leader>sd', ':SignifyHunkDiff<CR>')
-nmap('<leader>sD', ':SignifyDiff<CR>')
-nmap('<leader>sl', ':SignifyList<CR>')
-nmap('<leader>st', ':SignifyToggle<CR>')
-nmap('<leader>sh', ':SignifyToggleHighlight<CR>')
-nmap('<leader>sr', ':SignifyRefresh<CR>')
+nmap('<leader>sf', ':SignifyFold!<CR>', 'Fold (signify)')
+nmap('<leader>su', ':SignifyHunkUndo<CR>', 'Hunk undo (signify)')
+nmap('<leader>sd', ':SignifyHunkDiff<CR>', 'Hunk diff (signify)')
+nmap('<leader>sD', ':SignifyDiff<CR>', 'Diff (signify)')
+nmap('<leader>sl', ':SignifyList<CR>', 'List (signify)')
+nmap('<leader>st', ':SignifyToggle<CR>', 'Toggle (signify)')
+nmap('<leader>sh', ':SignifyToggleHighlight<CR>', 'Toggle highlight (signify)')
+nmap('<leader>sr', ':SignifyRefresh<CR>', 'Refresh (signify)')
 
-nmap('<leader>gi', ':ISwapWith<CR>')
-nmap('<m-left>', ':ISwapNodeWithLeft<CR>')
-nmap('<m-right>', ':ISwapNodeWithRight<CR>')
+nmap('<leader>gi', ':ISwapWith<CR>', 'Swap (iswap)')
+nmap('<m-left>', ':ISwapNodeWithLeft<CR>', 'Swap with left (iswap)')
+nmap('<m-right>', ':ISwapNodeWithRight<CR>', 'Swap with right (iswap)')
 
-nmap('<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>')
-nmap('<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>')
-nmap('<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>')
-nmap('<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>')
+nmap('<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>', 'Find files (telescope)')
+nmap('<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>', 'Live grep (telescope)')
+nmap('<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>', 'Buffers (telescope)')
+nmap('<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>', 'Help tags (telescope)')
 
-nmap('<leader>cd', ':cd %:h<cr>:pwd<cr>', {silent=false})
+nmap('<leader>cd', ':cd %:h<cr>:pwd<cr>', 'cd to current buffer', {silent=false})
 
 vim.api.nvim_create_user_command(
   'Wikt',

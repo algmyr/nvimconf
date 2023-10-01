@@ -7,10 +7,10 @@ return {
     config = function() -- {{{
       -- Mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-      nmap("<space>e", vim.diagnostic.open_float)
-      nmap("[d", vim.diagnostic.goto_prev)
-      nmap("]d", vim.diagnostic.goto_next)
-      nmap("<space>q", vim.diagnostic.setloclist)
+      nmap("<space>e", vim.diagnostic.open_float, "Open diagnostic float (LSP)")
+      nmap("[d", vim.diagnostic.goto_prev, "Go to previous diagnostic (LSP)")
+      nmap("]d", vim.diagnostic.goto_next, "Go to next diagnostic (LSP)")
+      nmap("<space>q", vim.diagnostic.setloclist, "Add diagnostics to loclist (LSP)")
     end, -- }}}
   },
   {
@@ -56,8 +56,8 @@ return {
     config = function() -- {{{
       --nmap("<space>a", ":CodeActionMenu<cr>")
       --vmap("<space>a", ":CodeActionMenu<cr>")
-      nmap("<space>a", vim.lsp.buf.code_action)
-      vmap("<space>a", vim.lsp.buf.code_action)
+      nmap("<space>a", vim.lsp.buf.code_action, "Code action (LSP)")
+      vmap("<space>a", vim.lsp.buf.code_action, "Code action (LSP)")
     end, -- }}}
   },
   {
@@ -87,10 +87,10 @@ return {
           wrap = false,
         }
       })
-      nmap('gD', '<CMD>Glance definitions<CR>')
-      nmap('gR', '<CMD>Glance references<CR>')
-      nmap('gY', '<CMD>Glance type_definitions<CR>')
-      nmap('gM', '<CMD>Glance implementations<CR>')
+      nmap('gD', '<CMD>Glance definitions<CR>', 'Go to definition (Glance)')
+      nmap('gR', '<CMD>Glance references<CR>', 'Go to references (Glance)')
+      nmap('gY', '<CMD>Glance type_definitions<CR>', 'Go to type definitions (Glance)')
+      nmap('gM', '<CMD>Glance implementations<CR>', 'Go to implementations (Glance)')
     end,
   },
 }
