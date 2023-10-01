@@ -28,6 +28,8 @@ nmap('<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>', 'Buffe
 nmap('<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>', 'Help tags (telescope)')
 
 nmap('<leader>cd', ':cd %:h<cr>:pwd<cr>', 'cd to current buffer', {silent=false})
+---@diagnostic disable-next-line: missing-parameter
+nmap('<space><space', function() require('notify').dismiss() end, 'Dismiss notification')
 
 vim.api.nvim_create_user_command(
   'Wikt',

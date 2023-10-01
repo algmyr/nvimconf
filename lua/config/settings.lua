@@ -14,7 +14,7 @@ vim.o.listchars = 'tab:| ,'
 vim.o.list = true
 
 -- Editor behavior
-vim.o.updatetime = 100
+vim.o.updatetime = 1000
 vim.o.wrap = false
 vim.o.scrolloff = 3
 vim.o.backspace = 'indent,eol,start'
@@ -30,7 +30,6 @@ vim.o.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkon1'
 -- Input
 vim.o.mouse = "a"
 vim.o.mousemodel = "extend"
-vim.o.pastetoggle='<F2>'
 
 --foldexpr=nvim_treesitter#foldexpr()
 
@@ -80,22 +79,6 @@ vim.o.foldtext = 'v:lua.custom_fold_text()'
 vim.o.signcolumn = 'auto:1'
 vim.o.foldcolumn = 'auto:3'
 vim.o.fillchars = 'foldclose:╶,foldopen:╭,foldsep:│,fold: '
-
-if vim.g.started_by_firenvim == true then
-  vim.o.laststatus = 0
-else
-  vim.o.laststatus = 2
-end
-
-vim.cmd[[
-function! SetFontSizeFirenvim(timer)
-    set guifont=FiraCode:h10
-endfunction
-
-if exists('g:started_by_firenvim')
-    call timer_start(3000, function("SetFontSizeFirenvim"))
-endif]]
-
 
 -- Hacky sign stuff.
 local signs = {

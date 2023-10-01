@@ -8,6 +8,7 @@ return {
   {
     "fedepujol/move.nvim",
     config = function()
+      require("move").setup {}
       -- Normal-mode commands
       nmap("-", ":MoveLine(1)<CR>", "Move line down")
       nmap("_", ":MoveLine(-1)<CR>", "Move line up")
