@@ -1,10 +1,14 @@
 require "mapping"
 
 local function on_attach(client, bufnr)
-  vim.lsp.inlay_hint(0, true)
+  if client.supports_method("textDocument/inlayHint") then
+    vim.lsp.inlay_hint(0, true)
+  end
 
   --require("lsp_signature").on_attach({}, bufnr)
-  require("nvim-navic").attach(client, bufnr)
+  if client.supports_method("textDocument/documentSymbol") then
+    require("nvim-navic").attach(client, bufnr)
+  end
 
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_set_option_value(
