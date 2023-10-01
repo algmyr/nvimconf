@@ -1,5 +1,5 @@
 function map(mode, lhs, rhs, desc, opts)
-  local options = { noremap = true, silent = true, desc = desc }
+  local options = { noremap = true, silent = true, desc = desc, unique = true }
   if opts then
       options = vim.tbl_extend("force", options, opts)
   end

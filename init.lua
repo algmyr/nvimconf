@@ -3,8 +3,8 @@ vim.g.maplocalleader = "-"
 
 -- This is a hack, but apparently if you don't source early
 -- you run into issues with packages using the default config.
-vim.cmd("source ~/.config/nvim/plugin/mappings.lua")
-vim.cmd("source ~/.config/nvim/plugin/settings.lua")
+require 'config.mappings'
+require 'config.settings'
 
 package.path = package.path .. ";~/.config/nvim/lua/%.lua"
 
