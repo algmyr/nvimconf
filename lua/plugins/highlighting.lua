@@ -19,5 +19,5 @@ return {
       buftypes = {},
     },
   },
-  "numirias/semshi",
+  "wookayin/semshi",
 }
