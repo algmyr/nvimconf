@@ -162,6 +162,14 @@ return {
     },
   },
   {
+      "rcarriga/nvim-notify",
+      config=function()
+        require("notify").setup({
+          top_down=false,
+        })
+      end,
+  },
+  {
     "folke/which-key.nvim",
     event = "VeryLazy",
     init = function()
