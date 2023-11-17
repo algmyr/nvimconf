@@ -5,8 +5,6 @@ nmap('<leader>/', ':nohlsearch<CR>', 'Unhighlight search')
 nmap('<leader>bk', ':bp <BAR> bd #<cr>', 'Kill buffer')
 
 -- Other mappings
-nmap('-', '"ldd"lp', 'Move line down')
-nmap('_', 'k"ldd"lpk', 'Move line up')
 vmap('<', '<gv', 'Dedent selection')
 vmap('>', '>gv', 'Indent selection')
 nmap('Q', '@q', 'Replay the q macro')
