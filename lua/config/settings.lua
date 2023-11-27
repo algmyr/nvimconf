@@ -78,8 +78,8 @@ end
 vim.o.foldtext = 'v:lua.custom_fold_text()'
 
 vim.o.signcolumn = 'auto:1'
-vim.o.foldcolumn = 'auto'
-vim.o.fillchars = 'foldclose:═,foldopen:╤,foldsep:│,fold: '
+vim.o.foldcolumn = 'auto:3'
+vim.o.fillchars = 'foldclose:╶,foldopen:╭,foldsep:│,fold: '
 
 if vim.g.started_by_firenvim == true then
   vim.o.laststatus = 0
