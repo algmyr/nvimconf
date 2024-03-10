@@ -162,12 +162,12 @@ return {
     },
   },
   {
-      "rcarriga/nvim-notify",
-      config=function()
-        require("notify").setup({
-          top_down=false,
-        })
-      end,
+    "rcarriga/nvim-notify",
+    config = function()
+      require("notify").setup {
+        top_down = false,
+      }
+    end,
   },
   {
     "folke/which-key.nvim",
@@ -176,7 +176,7 @@ return {
       vim.o.timeout = true
       vim.o.timeoutlen = 300
     end,
-    opts = {}
+    opts = {},
   },
 }
 

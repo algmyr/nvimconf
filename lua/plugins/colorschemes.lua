@@ -7,7 +7,7 @@ return {
     priority = 1000,
     config = function()
       vim.o.termguicolors = true
-      vim.cmd("color wombat_lua")
-    end
+      vim.cmd "color wombat_lua"
+    end,
   },
 }

@@ -44,8 +44,7 @@ return {
           }
         end,
         ["clangd"] = function()
-          local capabilities =
-            vim.tbl_extend("force", {}, config.capabilities) -- silly
+          local capabilities = vim.tbl_extend("force", {}, config.capabilities) -- silly
           capabilities.offsetEncoding = { "utf-16" }
           require("lspconfig").clangd.setup {
             capabilities = capabilities,

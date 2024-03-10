@@ -5,18 +5,18 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    config = function ()
+    config = function()
       require("telescope").setup {
         extensions = {
           ["ui-select"] = {
             require("telescope.themes").get_cursor {
               -- even more opts
-            }
-          }
-        }
+            },
+          },
+        },
       }
-      require("telescope").load_extension("ui-select")
-    end
+      require("telescope").load_extension "ui-select"
+    end,
   },
   "nvim-telescope/telescope-ui-select.nvim",
 }

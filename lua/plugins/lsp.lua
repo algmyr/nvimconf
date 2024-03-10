@@ -10,7 +10,11 @@ return {
       nmap("<space>e", vim.diagnostic.open_float, "Open diagnostic float (LSP)")
       nmap("[d", vim.diagnostic.goto_prev, "Go to previous diagnostic (LSP)")
       nmap("]d", vim.diagnostic.goto_next, "Go to next diagnostic (LSP)")
-      nmap("<space>q", vim.diagnostic.setloclist, "Add diagnostics to loclist (LSP)")
+      nmap(
+        "<space>q",
+        vim.diagnostic.setloclist,
+        "Add diagnostics to loclist (LSP)"
+      )
     end, -- }}}
   },
   {
@@ -68,29 +72,37 @@ return {
     url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     config = function()
       require("lsp_lines").setup()
-      vim.diagnostic.config({
+      vim.diagnostic.config {
         virtual_lines = {
           only_current_line = true,
-        }
-      })
+        },
+      }
     end,
   },
   {
     "dnlhc/glance.nvim",
     config = function()
-      local context_len = 15;
-      require('glance').setup({
-        height = 2*context_len + 1 + 1,
+      local context_len = 15
+      require("glance").setup {
+        height = 2 * context_len + 1 + 1,
         preview_win_opts = {
           cursorline = true,
           number = true,
           wrap = false,
-        }
-      })
-      nmap('gD', '<CMD>Glance definitions<CR>', 'Go to definition (Glance)')
-      nmap('gR', '<CMD>Glance references<CR>', 'Go to references (Glance)')
-      nmap('gY', '<CMD>Glance type_definitions<CR>', 'Go to type definitions (Glance)')
-      nmap('gM', '<CMD>Glance implementations<CR>', 'Go to implementations (Glance)')
+        },
+      }
+      nmap("gD", "<CMD>Glance definitions<CR>", "Go to definition (Glance)")
+      nmap("gR", "<CMD>Glance references<CR>", "Go to references (Glance)")
+      nmap(
+        "gY",
+        "<CMD>Glance type_definitions<CR>",
+        "Go to type definitions (Glance)"
+      )
+      nmap(
+        "gM",
+        "<CMD>Glance implementations<CR>",
+        "Go to implementations (Glance)"
+      )
     end,
   },
 }

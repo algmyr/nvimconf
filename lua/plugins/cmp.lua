@@ -73,7 +73,7 @@ return {
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.abort(),
           ["<CR>"] = cmp.mapping.confirm { select = false }, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-          ["<C-j>"] = cmp.mapping({ -- 
+          ["<C-j>"] = cmp.mapping { --
             i = function()
               if cmp.visible() then
                 cmp.abort()
@@ -88,26 +88,26 @@ return {
                 cmp.complete()
               end
             end,
-          }),
+          },
         },
-        sources = cmp.config.sources({
+        sources = cmp.config.sources {
           { name = "luasnip" }, -- For luasnip users.
           { name = "nvim_lsp" },
           { name = "buffer", max_item_count = 5 },
           { name = "path" },
-        }),
+        },
         formatting = {
-          format = require('lspkind').cmp_format({
-            mode = 'symbol', -- show only symbol annotations
+          format = require("lspkind").cmp_format {
+            mode = "symbol", -- show only symbol annotations
             maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-            ellipsis_char = '…', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+            ellipsis_char = "…", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
 
             -- The function below will be called before any actual modifications from lspkind
             -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-            before = function (_, vim_item)
+            before = function(_, vim_item)
               return vim_item
-            end
-          })
+            end,
+          },
         },
       }
 

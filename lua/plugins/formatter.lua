@@ -40,7 +40,7 @@ return {
         },
       },
     }
-  end -- }}}
+  end, -- }}}
 }
 
 -- vim: set fdm=marker:
