@@ -32,7 +32,6 @@ return {
     cond = not vim.g.started_by_firenvim,
     dependencies = {
       "nvim-tree/nvim-web-devicons",
-      "SmiteshP/nvim-navic",
     },
     config = function() -- {{{
       local custom_wombat = require "lualine.themes.wombat"
@@ -65,7 +64,6 @@ return {
       custom_wombat.command = gen_theme(command, main_bg)
       custom_wombat.inactive = gen_theme(nil, inactive_bg)
 
-      local navic = require "nvim-navic"
       require("lualine").setup {
         options = {
           theme = custom_wombat,
@@ -76,34 +74,45 @@ return {
           lualine_a = { "mode" },
           lualine_b = { "branch", "diff", "diagnostics" },
           lualine_c = {
-            "filename",
             {
-              function()
-                return navic.get_location()
-              end,
-              cond = function()
-                return navic.is_available()
-              end,
+              "filename",
+              path = 2,
             },
           },
           lualine_x = {
             {
-              require("noice").api.statusline.mode.get,
-              cond = require("noice").api.statusline.mode.has,
+              require("noice").api.status.mode.get,
+              cond = require("noice").api.status.mode.has,
+              color = { fg = "#ff9e64" },
+            },
+            {
+              require("noice").api.status.search.get,
+              cond = require("noice").api.status.search.has,
+              color = { fg = "#ff9e64" },
+            },
+            {
+              "selectioncount",
               color = { fg = "#ff9e64" },
             },
             "encoding",
             "fileformat",
             "filetype",
           },
-          lualine_y = { "progress" },
-          lualine_z = { "location" },
+          lualine_y = {
+            "progress",
+          },
+          lualine_z = {
+            "location",
+          },
         },
         inactive_sections = {
           lualine_a = {},
           lualine_b = {},
           lualine_c = {
-            "filename",
+            {
+              "filename",
+              path = 2,
+            },
           },
           lualine_x = { "location" },
           lualine_y = {},
@@ -115,16 +124,6 @@ return {
         extensions = {},
       }
     end, -- }}}
-  },
-  {
-    "SmiteshP/nvim-navic",
-    dependencies = "neovim/nvim-lspconfig",
-    config = function()
-      local navic = require "nvim-navic"
-      navic.setup {
-        separator = "  ",
-      }
-    end,
   },
   {
     "folke/noice.nvim",

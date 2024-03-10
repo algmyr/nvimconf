@@ -7,8 +7,6 @@ return {
     dependencies = {
       "simrat39/rust-tools.nvim",
       "williamboman/mason.nvim",
-      "SmiteshP/nvim-navic",
-      "ray-x/lsp_signature.nvim",
     },
     config = function() -- {{{
       local config = require("config.lsp_defaults").get_default_config()
