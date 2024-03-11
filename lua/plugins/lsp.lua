@@ -56,15 +56,6 @@ return {
     opts = { autocmd = { enabled = true } },
   },
   {
-    "weilbith/nvim-code-action-menu",
-    config = function() -- {{{
-      --nmap("<space>a", ":CodeActionMenu<cr>")
-      --vmap("<space>a", ":CodeActionMenu<cr>")
-      nmap("<space>a", vim.lsp.buf.code_action, "Code action (LSP)")
-      vmap("<space>a", vim.lsp.buf.code_action, "Code action (LSP)")
-    end, -- }}}
-  },
-  {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
