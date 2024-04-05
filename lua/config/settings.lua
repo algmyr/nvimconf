@@ -31,32 +31,7 @@ vim.o.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkon1'
 vim.o.mouse = "a"
 vim.o.mousemodel = "extend"
 
---foldexpr=nvim_treesitter#foldexpr()
-
-function has_fold()
-  return false -- TODO(algmyr): fix this
-  --local view = vim.fn.winsaveview()
-  --local fold = 0
-  --for k, move in ipairs { "zj", "zk" } do
-  --  vim.api.nvim_command("keepj norm!" .. move)
-  --  if vim.fn.foldlevel "." > 0 then
-  --    fold = 1
-  --    break
-  --  end
-  --end
-  --vim.fn.winrestview(view)
-  --return fold
-end
-
-function sign_column_active()
-  local placed = vim.fn.sign_getplaced()[1]
-  if placed == nil then
-    return false
-  end
-  return #placed.signs > 0
-end
-
-function custom_fold_text()
+function CustomFoldText()
   local line = vim.fn.getline(vim.v.foldstart)
   local line_count = vim.v.foldend - vim.v.foldstart + 1
   local summary = line
@@ -74,7 +49,7 @@ function custom_fold_text()
   return summary .. string.rep(" ", padlen) .. lines
 end
 
-vim.o.foldtext = 'v:lua.custom_fold_text()'
+vim.o.foldtext = 'v:lua.CustomFoldText()'
 
 vim.o.signcolumn = 'auto:1'
 vim.o.foldcolumn = 'auto:3'
