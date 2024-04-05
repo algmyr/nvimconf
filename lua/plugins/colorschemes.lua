@@ -1,5 +1,4 @@
 return {
-  "ellisonleao/gruvbox.nvim",
   {
     "algmyr/vim-wombat-lua",
     dev = true,
