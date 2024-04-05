@@ -46,6 +46,9 @@ return {
       autoswap = true,
     }, -- }}}
   },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+  },
 }
 
 -- vim: set fdm=marker:
