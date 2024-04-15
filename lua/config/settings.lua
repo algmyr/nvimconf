@@ -57,10 +57,10 @@ vim.o.fillchars = 'foldclose:╶,foldopen:╭,foldsep:│,fold: '
 
 -- Hacky sign stuff.
 local signs = {
-  Info = " ",
-  Hint = " ",
-  Warn = " ",
-  Error = " ",
+  Info = " ",
+  Hint = " ",
+  Warn = " ",
+  Error = " ",
 }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
