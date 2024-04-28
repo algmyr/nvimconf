@@ -50,11 +50,6 @@ return {
       }
     end, -- }}}
   },
-  --"ray-x/lsp_signature.nvim",
-  {
-    "kosayoda/nvim-lightbulb",
-    opts = { autocmd = { enabled = true } },
-  },
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
