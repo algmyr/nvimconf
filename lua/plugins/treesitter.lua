@@ -1,6 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    event = "VeryLazy",
     build = ":TSUpdate",
     config = function() -- {{{
       require("nvim-treesitter.configs").setup {
@@ -27,6 +28,7 @@ return {
   "nvim-treesitter/playground",
   {
     "mizlan/iswap.nvim",
+    event = "VeryLazy",
     opts = { -- {{{
       -- The keys that will be used as a selection, in order
       -- ('asdfghjklqwertyuiopzxcvbnm' by default)
@@ -48,6 +50,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
+    event = "VeryLazy",
   },
 }
 

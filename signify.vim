@@ -28,8 +28,6 @@ function ChangeTargetCommit(older_or_younger)
   echom l:output_msg
 endfunction
 
-" call UpdateVcsCmds()
-
 let g:target_commit = 0
 command! SignifyOlder call ChangeTargetCommit('older')
 command! SignifyNewer call ChangeTargetCommit('younger')

@@ -1,7 +1,11 @@
 return {
-  "machakann/vim-highlightedyank",
+  {
+    "machakann/vim-highlightedyank",
+    event = "VeryLazy",
+  },
   {
     "NvChad/nvim-colorizer.lua",
+    event = "VeryLazy",
     opts = {
       filetypes = { "*" },
       user_default_options = {
@@ -19,5 +23,13 @@ return {
       buftypes = {},
     },
   },
-  "wookayin/semshi",
+  {
+    "wookayin/semshi",
+    event = "VeryLazy",
+    config = function()
+      -- Semshi uses FileType autocmds on init. Have it called once again when lazy loaded.
+      vim.cmd [[ doautocmd SemshiInit FileType python ]]
+    end,
+    build = ":UpdateRemotePlugins",
+  },
 }
