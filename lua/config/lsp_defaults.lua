@@ -2,7 +2,7 @@ local M = {}
 
 local function on_attach(client, bufnr)
   if client.supports_method("textDocument/inlayHint") then
-    vim.lsp.inlay_hint.enable(0, true)
+    vim.lsp.inlay_hint.enable(true, {bufnr=0})
   end
 
   -- Enable completion triggered by <c-x><c-o>
