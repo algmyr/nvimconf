@@ -177,6 +177,13 @@ return {
     end,
     opts = {},
   },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    config = function()
+      require("ibl").setup{}
+    end,
+  },
 }
 
 -- vim: set fdm=marker:
