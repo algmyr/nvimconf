@@ -1,9 +1,34 @@
 return {
   { 'williamboman/mason.nvim', opts = {} },
   {
+    'mrcjkb/rustaceanvim',
+    version = '^4', -- Recommended
+    lazy = false, -- This plugin is already lazy
+    init = function()
+      local config = require('config.lsp_defaults').get_default_config()
+      local function code_action() vim.cmd.RustLsp 'codeAction' end
+      vim.g.rustaceanvim = {
+        tools = {},
+        server = {
+          on_attach = function(client, bufnr) config.on_attach(client, bufnr) end,
+          default_settings = {
+            ['rust-analyzer'] = {
+              diagnostics = {
+                style_lints = {
+                  enable = true,
+                },
+              },
+            },
+          },
+        },
+        dap = {},
+      }
+    end,
+  },
+  {
     'williamboman/mason-lspconfig.nvim',
     dependencies = {
-      'simrat39/rust-tools.nvim',
+      'mrcjkb/rustaceanvim',
       'williamboman/mason.nvim',
     },
     config = function() -- {{{
@@ -21,24 +46,7 @@ return {
         end,
         -- Next, you can provide a dedicated handler for specific servers.
         -- For example, a handler override for the `rust_analyzer`:
-        ['rust_analyzer'] = function()
-          require('rust-tools').setup {
-            server = {
-              on_attach = config.on_attach,
-            },
-            tools = { -- rust-tools options
-              -- These apply to the default RustSetInlayHints command
-              inlay_hints = {
-                auto = false,
-                --only_current_line = false,
-                --show_parameter_hints = true,
-                parameter_hints_prefix = '← ',
-                other_hints_prefix = '→ ',
-                highlight = 'Annotation',
-              },
-            },
-          }
-        end,
+        ['rust_analyzer'] = function() end,
         ['clangd'] = function()
           local capabilities = vim.tbl_extend('force', {}, config.capabilities) -- silly
           capabilities.offsetEncoding = { 'utf-16' }
