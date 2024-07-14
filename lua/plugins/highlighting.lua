@@ -25,10 +25,6 @@ return {
   },
   {
     "wookayin/semshi",
-    config = function()
-      -- Semshi uses FileType autocmds on init. Have it called once again when lazy loaded.
-      vim.cmd [[ doautocmd SemshiInit FileType python ]]
-    end,
     build = ":UpdateRemotePlugins",
   },
 }
