@@ -13,6 +13,13 @@ return {
             ["foo.bar"] = "Identifier",
           },
         },
+        ensure_installed = {
+          "vimdoc",
+          "luadoc",
+          "vim",
+          "lua",
+          "markdown"
+        },
         incremental_selection = {
           enable = true,
           keymaps = {
