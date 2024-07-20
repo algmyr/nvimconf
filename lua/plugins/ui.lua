@@ -126,6 +126,15 @@ return {
     end, -- }}}
   },
   {
+    "smjonas/inc-rename.nvim",
+    config = function()
+      require("inc_rename").setup()
+      vim.lsp.buf.rename = function()
+        vim.api.nvim_feedkeys(":IncRename ", "n", false)
+      end
+    end,
+  },
+  {
     "folke/noice.nvim",
     config = function()
       require("noice").setup {
