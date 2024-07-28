@@ -1,3 +1,5 @@
+local m = require("mapping")
+
 return {
   "editorconfig/editorconfig-vim",
 
@@ -7,13 +9,17 @@ return {
     "fedepujol/move.nvim",
     config = function()
       require("move").setup {}
-      -- Normal-mode commands
-      nmap("-", ":MoveLine(1)<CR>", "Move line down")
-      nmap("_", ":MoveLine(-1)<CR>", "Move line up")
 
-      -- Visual-mode commands
-      vmap("-", ":MoveBlock(1)<CR>", "Move block down")
-      vmap("_", ":MoveBlock(-1)<CR>", "Move block up")
+      m.mappings "move" {
+        ["-"] = {
+          normal = { "<cmd>MoveLine(1)<cr>", "Move line down" },
+          visual = { ":MoveBlock(1)<cr>", "Move block down" },
+        },
+        ["_"] = {
+          normal = { "<cmd>MoveLine(-1)<cr>", "Move line up" },
+          visual = { ":MoveBlock(-1)<cr>", "Move block up" },
+        },
+      }
     end,
   },
 }

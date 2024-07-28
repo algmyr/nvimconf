@@ -1,5 +1,7 @@
 local M = {}
 
+local m = require "mapping"
+
 local function on_attach(client, bufnr)
   if client.supports_method("textDocument/inlayHint") then
     vim.lsp.inlay_hint.enable(true, {bufnr=0})
@@ -12,27 +14,27 @@ local function on_attach(client, bufnr)
     { buf = bufnr }
   )
 
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { buffer = bufnr }
-  --nmap("gD", vim.lsp.buf.declaration, bufopts)
-  nmap("gd", vim.lsp.buf.definition, 'Go to definition (LSP)', bufopts)
-  nmap("K", vim.lsp.buf.hover, 'Hover (LSP)', bufopts)
-  nmap("gi", vim.lsp.buf.implementation, 'Go to implementation (LSP)', bufopts)
-  nmap("<C-k>", vim.lsp.buf.signature_help, 'Signature help (LSP)', bufopts)
-  nmap("<space>wa", vim.lsp.buf.add_workspace_folder, 'Add workspace folder (LSP)', bufopts)
-  nmap("<space>wr", vim.lsp.buf.remove_workspace_folder, 'Remove workspace folder (LSP)', bufopts)
-  nmap("<space>wl", function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, 'List workspace folders (LSP)', bufopts)
-  nmap("<space>D", vim.lsp.buf.type_definition, 'Go to type definition (LSP)', bufopts)
-  nmap("<space>rn", vim.lsp.buf.rename, 'Rename (LSP)', bufopts)
-  nmap("<space>a", vim.lsp.buf.code_action, 'Code action (LSP)', bufopts)
-  vmap("<space>a", vim.lsp.buf.code_action, 'Code action (LSP)', bufopts)
-  nmap("gr", vim.lsp.buf.references, 'Go to references (LSP)', bufopts)
-  nmap("<space>F", function()
-    vim.lsp.buf.format { async = true }
-  end, 'Format (LSP)', bufopts)
+  m.mappings "LSP" {
+    K = m.normal { vim.lsp.buf.hover, "Hover", bufopts },
+    gd = m.normal { vim.lsp.buf.definition, "Go to definition", bufopts },
+    gi = m.normal { vim.lsp.buf.implementation, "Go to implementation", bufopts },
+    gr = m.normal { vim.lsp.buf.references, "Go to references", bufopts },
+    ["<C-k>"] = m.normal { vim.lsp.buf.signature_help, "Signature help", bufopts },
+    ["<space>"] = {
+      wa = m.normal { vim.lsp.buf.add_workspace_folder, "Add workspace folder", bufopts },
+      wr = m.normal { vim.lsp.buf.remove_workspace_folder, "Remove workspace folder", bufopts },
+      wl = m.normal { function()
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+      end, "List workspace folders", bufopts },
+      D = m.normal { vim.lsp.buf.type_definition, "Go to type definition", bufopts },
+      rn = m.normal { vim.lsp.buf.rename, "Rename", bufopts },
+      a = {
+        normal={vim.lsp.buf.code_action, "Code action", bufopts},
+        visual={vim.lsp.buf.code_action, "Code action", bufopts},
+      },
+    },
+  }
 end
 
 function M.get_default_config()

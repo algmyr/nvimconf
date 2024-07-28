@@ -1,5 +1,3 @@
-require "mapping"
-
 return {
   { "williamboman/mason.nvim", opts = {} },
   {

@@ -1,21 +1,18 @@
-require "mapping"
+local m = require "mapping"
 
 return {
   {
     "neovim/nvim-lspconfig",
     dependencies = { "williamboman/mason.nvim" },
-    config = function() -- {{{
-      -- Mappings.
+    config = function()
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-      nmap("<space>e", vim.diagnostic.open_float, "Open diagnostic float (LSP)")
-      nmap("[d", vim.diagnostic.goto_prev, "Go to previous diagnostic (LSP)")
-      nmap("]d", vim.diagnostic.goto_next, "Go to next diagnostic (LSP)")
-      nmap(
-        "<space>q",
-        vim.diagnostic.setloclist,
-        "Add diagnostics to loclist (LSP)"
-      )
-    end, -- }}}
+      m.mappings "LSP" {
+        ["<space>e"] = m.normal { vim.diagnostic.open_float, "Open diagnostic float" },
+        ["[d"] = m.normal { vim.diagnostic.goto_prev, "Go to previous diagnostic" },
+        ["]d"] = m.normal { vim.diagnostic.goto_next, "Go to next diagnostic" },
+        ["<space>q"] = m.normal { vim.diagnostic.setloclist, "Add diagnostics to loclist" },
+      }
+    end,
   },
   {
     "folke/neodev.nvim",
@@ -23,12 +20,7 @@ return {
     config = function() -- {{{
       require("neodev").setup {
         override = function(root_dir, library)
-          if
-            require("neodev.util").has_file(
-              root_dir,
-              "~/.local/share/nvim/lazy"
-            )
-          then
+          if require("neodev.util").has_file(root_dir, "~/.local/share/nvim/lazy") then
             library.enabled = true
             library.plugins = true
           end
@@ -78,18 +70,12 @@ return {
           wrap = false,
         },
       }
-      nmap("gD", "<CMD>Glance definitions<CR>", "Go to definition (Glance)")
-      nmap("gR", "<CMD>Glance references<CR>", "Go to references (Glance)")
-      nmap(
-        "gY",
-        "<CMD>Glance type_definitions<CR>",
-        "Go to type definitions (Glance)"
-      )
-      nmap(
-        "gM",
-        "<CMD>Glance implementations<CR>",
-        "Go to implementations (Glance)"
-      )
+      m.mappings "Glance" {
+        dD = m.normal { "<cmd>Glance definition<cr>", "Go to definition" },
+        dR = m.normal { "<cmd>Glance references<cr>", "Go to references" },
+        dY = m.normal { "<cmd>Glance type_definitions<cr>", "Go to type definitions" },
+        dM = m.normal { "<cmd>Glance implementations<cr>", "Go to implementations" },
+      }
     end,
   },
 }

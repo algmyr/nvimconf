@@ -1,4 +1,4 @@
-require "mapping"
+local m  = require "mapping"
 
 return {
   {
@@ -15,10 +15,14 @@ return {
         },
       }
 
-      nmap("<leader>n", ":BufferLineCyclePrev<cr>", "Go to buffer left")
-      nmap("<leader>m", ":BufferLineCycleNext<cr>", "Go to buffer right")
-      nmap("<leader>N", ":BufferLineMovePrev<cr>", "Move buffer left")
-      nmap("<leader>M", ":BufferLineMoveNext<cr>", "Move buffer right")
+      m.mappings "bufferline" {
+        ["<leader>"] = {
+          n = m.normal{ "<cmd>BufferLineCyclePrev<cr>", "Go to buffer left" },
+          m = m.normal{ "<cmd>BufferLineCycleNext<cr>", "Go to buffer right" },
+          N = m.normal{ "<cmd>BufferLineMovePrev<cr>", "Move buffer left" },
+          M = m.normal{ "<cmd>BufferLineMoveNext<cr>", "Move buffer right" },
+        },
+      }
     end, -- }}}
   },
   {
