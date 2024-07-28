@@ -1,23 +1,23 @@
-local m = require("mapping")
+local m = require 'mapping'
 
 return {
-  "editorconfig/editorconfig-vim",
+  'editorconfig/editorconfig-vim',
 
   -- tosort
-  "wsdjeg/vim-fetch",
+  'wsdjeg/vim-fetch',
   {
-    "fedepujol/move.nvim",
+    'fedepujol/move.nvim',
     config = function()
-      require("move").setup {}
+      require('move').setup {}
 
-      m.mappings "move" {
-        ["-"] = {
-          normal = { "<cmd>MoveLine(1)<cr>", "Move line down" },
-          visual = { ":MoveBlock(1)<cr>", "Move block down" },
+      m.mappings 'move' {
+        ['-'] = {
+          normal = { '<cmd>MoveLine(1)<cr>', 'Move line down' },
+          visual = { ':MoveBlock(1)<cr>', 'Move block down' },
         },
-        ["_"] = {
-          normal = { "<cmd>MoveLine(-1)<cr>", "Move line up" },
-          visual = { ":MoveBlock(-1)<cr>", "Move block up" },
+        ['_'] = {
+          normal = { '<cmd>MoveLine(-1)<cr>', 'Move line up' },
+          visual = { ':MoveBlock(-1)<cr>', 'Move block up' },
         },
       }
     end,

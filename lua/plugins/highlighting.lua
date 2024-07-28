@@ -1,13 +1,13 @@
 return {
   {
-    "machakann/vim-highlightedyank",
-    event = "VeryLazy",
+    'machakann/vim-highlightedyank',
+    event = 'VeryLazy',
   },
   {
-    "NvChad/nvim-colorizer.lua",
-    event = "VeryLazy",
+    'NvChad/nvim-colorizer.lua',
+    event = 'VeryLazy',
     opts = {
-      filetypes = { "*" },
+      filetypes = { '*' },
       user_default_options = {
         RGB = true, -- #RGB hex codes
         RRGGBB = true, -- #RRGGBB hex codes
@@ -16,15 +16,15 @@ return {
         AARRGGBB = false, -- 0xAARRGGBB hex codes
         rgb_fn = true, -- CSS rgb() and rgba() functions
         hsl_fn = true, -- CSS hsl() and hsla() functions
-        mode = "background", -- Mode (foreground, background, virtualtext)
-        virtualtext = "■",
+        mode = 'background', -- Mode (foreground, background, virtualtext)
+        virtualtext = '■',
       },
       -- all the sub-options of filetypes apply to buftypes
       buftypes = {},
     },
   },
   {
-    "wookayin/semshi",
-    build = ":UpdateRemotePlugins",
+    'wookayin/semshi',
+    build = ':UpdateRemotePlugins',
   },
 }

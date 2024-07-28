@@ -1,45 +1,45 @@
 return {
   {
-    "nvim-treesitter/nvim-treesitter",
-    event = "VeryLazy",
-    build = ":TSUpdate",
+    'nvim-treesitter/nvim-treesitter',
+    event = 'VeryLazy',
+    build = ':TSUpdate',
     config = function() -- {{{
-      require("nvim-treesitter.configs").setup {
+      require('nvim-treesitter.configs').setup {
         highlight = {
           enable = true,
           disable = {},
           custom_captures = {
             -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
-            ["foo.bar"] = "Identifier",
+            ['foo.bar'] = 'Identifier',
           },
         },
         ensure_installed = {
-          "vimdoc",
-          "luadoc",
-          "vim",
-          "lua",
-          "markdown"
+          'vimdoc',
+          'luadoc',
+          'vim',
+          'lua',
+          'markdown',
         },
         incremental_selection = {
           enable = true,
           keymaps = {
-            init_selection = "<C-n>",
-            node_incremental = "<C-n>",
-            scope_incremental = "<C-s>",
-            node_decremental = "<C-p>",
+            init_selection = '<C-n>',
+            node_incremental = '<C-n>',
+            scope_incremental = '<C-s>',
+            node_decremental = '<C-p>',
           },
         },
       }
     end, -- }}}
   },
-  "nvim-treesitter/playground",
+  'nvim-treesitter/playground',
   {
-    "mizlan/iswap.nvim",
-    event = "VeryLazy",
+    'mizlan/iswap.nvim',
+    event = 'VeryLazy',
     opts = { -- {{{
       -- The keys that will be used as a selection, in order
       -- ('asdfghjklqwertyuiopzxcvbnm' by default)
-      keys = "1234567890",
+      keys = '1234567890',
 
       -- Post-operation flashing highlight style,
       -- either 'simultaneous' or 'sequential', or false to disable
@@ -56,10 +56,10 @@ return {
     }, -- }}}
   },
   {
-    "nvim-treesitter/nvim-treesitter-context",
-    event = "VeryLazy",
+    'nvim-treesitter/nvim-treesitter-context',
+    event = 'VeryLazy',
     config = function()
-      require'treesitter-context'.setup{
+      require('treesitter-context').setup {
         max_lines = 5, -- How many lines the window should span. Values <= 0 mean no limit.
         min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
         line_numbers = true,
@@ -68,7 +68,7 @@ return {
         -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
         separator = nil,
       }
-    end
+    end,
   },
 }
 
