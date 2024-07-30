@@ -1,11 +1,9 @@
 return {
   {
     'machakann/vim-highlightedyank',
-    event = 'VeryLazy',
   },
   {
     'NvChad/nvim-colorizer.lua',
-    event = 'VeryLazy',
     opts = {
       filetypes = { '*' },
       user_default_options = {
