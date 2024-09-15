@@ -47,7 +47,7 @@ function CustomFoldText()
   return summary .. string.rep(' ', padlen) .. lines
 end
 
-vim.o.foldtext = 'v:lua.CustomFoldText()'
+vim.o.foldtext = ""
 
 vim.o.signcolumn = 'auto:1'
 vim.o.foldcolumn = 'auto:3'
@@ -76,3 +76,4 @@ vim.filetype.add {
     frag = 'glsl',
   },
 }
+
