@@ -37,6 +37,11 @@ function M.get_default_config()
   local config = require('lspconfig').util.default_config
   config.on_attach = on_attach
   config.capabilities = require('cmp_nvim_lsp').default_capabilities()
+  config.capabilities.workspace = {
+    didChangeWatchedFiles = {
+      dynamicRegistration = false
+    }
+  }
   config.inlay_hints = { enabled = true }
   return config
 end
