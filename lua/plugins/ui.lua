@@ -131,7 +131,9 @@ return {
     'smjonas/inc-rename.nvim',
     config = function()
       require('inc_rename').setup()
-      vim.lsp.buf.rename = function() vim.api.nvim_feedkeys(':IncRename ', 'n', false) end
+      vim.lsp.buf.rename = function()
+        vim.api.nvim_feedkeys(':IncRename ' .. vim.fn.expand('<cword>'), 'n', false)
+      end
     end,
   },
   {
