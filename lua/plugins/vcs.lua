@@ -7,8 +7,18 @@ return {
     end,
   },
   {
-    'mhinz/vim-signify',
+    -- 'mhinz/vim-signify',
+    enabled = false,
+    dir = "~/jj/vim-signify",
     build = ':UpdateRemotePlugins',
-    config = function() vim.cmd 'runtime signify.vim' end,
+    config = function()
+      require('sy').setup{}
+      vim.cmd 'runtime signify.vim'
+    end,
+  },
+  {
+    'algmyr/vcsigns.nvim',
+    name = "vcsigns",
+    opts = {},
   },
 }
