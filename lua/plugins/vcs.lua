@@ -7,13 +7,11 @@ return {
     end,
   },
   {
-    -- 'mhinz/vim-signify',
-    enabled = false,
-    dir = "~/jj/vim-signify",
-    build = ':UpdateRemotePlugins',
+    "algmyr/vcsigns.nvim",
     config = function()
-      require('sy').setup{}
-      vim.cmd 'runtime signify.vim'
+      require('vcsigns').setup {
+        target_commit = 1,
+      }
     end,
   },
   {

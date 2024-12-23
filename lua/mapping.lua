@@ -32,6 +32,8 @@ M.select = function(t) return { select = t } end
 
 M.insert = function(t) return { insert = t } end
 
+M.operator = function(t) return { operator = t } end
+
 local groupify = function(t, group)
   if t[2] and group then t[2] = t[2] .. ' (' .. group .. ')' end
   return t
@@ -52,6 +54,7 @@ M.mappings = function(group)
       make_map(t, 'visual', binding, group)
       make_map(t, 'select', binding, group)
       make_map(t, 'insert', binding, group)
+      make_map(t, 'operator', binding, group)
       for k, v in pairs(t) do
         dfs(binding .. k, v)
       end

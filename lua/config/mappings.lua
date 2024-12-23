@@ -1,19 +1,6 @@
 local m = require 'mapping'
 
--- m.mappings 'signify' {
---   ['<leader>s'] = {
---     f = m.normal { '<cmd>SignifyFold!<CR>', 'Fold' },
---     u = m.normal { '<cmd>SignifyHunkUndo<CR>', 'Hunk undo' },
---     d = m.normal { '<cmd>SignifyHunkDiff<CR>', 'Hunk diff' },
---     D = m.normal { '<cmd>SignifyDiff<CR>', 'Diff' },
---     l = m.normal { '<cmd>SignifyList<CR>', 'List' },
---     t = m.normal { '<cmd>SignifyToggle<CR>', 'Toggle' },
---     h = m.normal { '<cmd>SignifyToggleHighlight<CR>', 'Toggle highlight' },
---     r = m.normal { '<cmd>SignifyRefresh<CR>', 'Refresh' },
---   },
--- }
-
-m.mappings 'vcssigns' {
+m.mappings 'vcsigns' {
   ["[r"] = m.normal { function() require('vcsigns').actions.target_older_commit(0, vim.v.count1) end, 'Move diff target back' },
   ["]r"] = m.normal { function() require('vcsigns').actions.target_newer_commit(0, vim.v.count1) end, 'Move diff target forward' },
   ["]c"] = m.normal { function() require('vcsigns').actions.next_hunk(0, vim.v.count1) end, 'Go to next hunk' },
@@ -22,6 +9,11 @@ m.mappings 'vcssigns' {
   ["[C"] = m.normal { function() require('vcsigns').actions.prev_hunk(0, 9999) end, 'Go to first hunk' },
   ["<leader>su"] = m.normal { function() require('vcsigns').actions.hunk_undo(0) end, 'Undo the hunk under the cursor' },
   ["<leader>sd"] = m.normal { function() require('vcsigns').actions.show_diff(0) end, 'Show diff of hunk under the cursor' },
+  ["<space>h"] = {
+    operator = { function() require('vcsigns.textobj').select_hunk(0) end, 'Hunk under cursor' },
+    visual = { function() require('vcsigns.textobj').select_hunk(0) end, 'Hunk under cursor' },
+  },
+}
 }
 
 m.mappings 'iswap' {
