@@ -14,6 +14,13 @@ m.mappings 'vcsigns' {
     visual = { function() require('vcsigns.textobj').select_hunk(0) end, 'Hunk under cursor' },
   },
 }
+
+m.mappings 'vcmarkers' {
+  ["]m"] = m.normal { function() require('vcmarkers').actions.next_marker(0, vim.v.count1) end, 'Go to next marker' },
+  ["[m"] = m.normal { function() require('vcmarkers').actions.prev_marker(0, vim.v.count1) end, 'Go to previous marker' },
+  ["<space>ms"] = m.normal { function() require('vcmarkers').actions.select_section(0) end, 'Select the section under the cursor' },
+  ["<space>mf"] = m.normal { function() require('vcmarkers').fold.toggle() end, 'Fold outside markers' },
+  ["<space>mc"] = m.normal { function() require('vcmarkers').actions.cycle_marker(0) end, 'Cycle marker representations' },
 }
 
 m.mappings 'iswap' {

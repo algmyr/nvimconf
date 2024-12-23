@@ -15,8 +15,9 @@ return {
     end,
   },
   {
-    'algmyr/vcsigns.nvim',
-    name = "vcsigns",
-    opts = {},
+    "algmyr/vcmarkers.nvim",
+    config = function()
+      require('vcmarkers').setup { target_commit = 1 }
+    end,
   },
 }
