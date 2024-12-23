@@ -9,7 +9,7 @@ function UpdateVcsCmds()
 
   let s:jj_commit = printf('roots(ancestors(@, %d))', g:target_commit + 2)
   let g:signify_vcs_cmds.jj = 'jj diff --git --context=0 --from "' .. s:jj_commit .. '" --to "@" -- %f'
-  let g:signify_vcs_cmds_diffmode.jj = 'jj cat -r "' .. s:jj_commit .. '" -- %f'
+  let g:signify_vcs_cmds_diffmode.jj = 'jj file show -r "' .. s:jj_commit .. '" -- %f'
 endfunction
 
 function ChangeTargetCommit(older_or_younger)
