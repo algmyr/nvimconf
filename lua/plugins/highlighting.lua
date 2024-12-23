@@ -18,8 +18,4 @@ return {
       buftypes = {},
     },
   },
-  {
-    'wookayin/semshi',
-    build = ':UpdateRemotePlugins',
-  },
 }
