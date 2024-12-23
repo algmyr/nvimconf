@@ -172,6 +172,8 @@ return {
     config = function()
       require('notify').setup {
         top_down = false,
+        stages = 'static',
+        render = 'compact',
       }
     end,
   },
