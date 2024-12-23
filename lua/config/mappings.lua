@@ -29,6 +29,10 @@ m.mappings 'telescope' {
 }
 
 m.mappings 'misc' {
+  [';'] = {
+    normal = { ':', '', { silent = false } },
+    visual = { ':', '', { silent = false } },
+  },
   ['<leader>'] = {
     ['/'] = m.normal { '<cmd>nohlsearch<CR>', 'Unhighlight search' },
     ['bk'] = m.normal { '<cmd>bp <BAR> bd #<cr>', 'Kill buffer' },
