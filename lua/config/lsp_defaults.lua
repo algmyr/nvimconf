@@ -8,6 +8,10 @@ local function on_attach(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_set_option_value('omnifunc', 'v:lua.vim.lsp.omnifunc', { buf = bufnr })
 
+  vim.diagnostic.config({ virtual_lines = {
+    current_line = true,
+  } })
+
   local bufopts = { buffer = bufnr }
   m.mappings 'LSP' {
     K = m.normal { vim.lsp.buf.hover, 'Hover', bufopts },
