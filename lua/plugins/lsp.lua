@@ -15,32 +15,9 @@ return {
     end,
   },
   {
-    'folke/neodev.nvim',
-    dependencies = { 'neovim/nvim-lspconfig' },
-    config = function() -- {{{
-      require('neodev').setup {
-        override = function(root_dir, library)
-          if require('neodev.util').has_file(root_dir, '~/.local/share/nvim/lazy') then
-            library.enabled = true
-            library.plugins = true
-          end
-        end,
-      }
-
-      -- then setup your lsp server as usual
-      local lspconfig = require 'lspconfig'
-
-      -- example to setup lua_ls and enable call snippets
-      lspconfig.lua_ls.setup {
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = 'Replace',
-            },
-          },
-        },
-      }
-    end, -- }}}
+    'folke/lazydev.nvim',
+    ft = "lua",
+    opts = {},
   },
   {
     'folke/trouble.nvim',
