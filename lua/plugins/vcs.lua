@@ -1,13 +1,7 @@
 return {
   {
-    'sjl/splice.vim',
-    config = function()
-      vim.g.splice_initial_layout_grid = 1
-      vim.g.splice_initial_diff_grid = 1
-    end,
-  },
-  {
     'algmyr/vcsigns.nvim',
+    dependencies = { 'algmyr/vclib.nvim' },
     config = function()
       require('vcsigns').setup {
         target_commit = 1,
@@ -16,6 +10,10 @@ return {
   },
   {
     'algmyr/vcmarkers.nvim',
+    dependencies = { 'algmyr/vclib.nvim' },
     config = function() require('vcmarkers').setup {} end,
+  },
+  {
+    'algmyr/vclib.nvim',
   },
 }

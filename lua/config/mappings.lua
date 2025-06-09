@@ -15,7 +15,7 @@ m.mappings 'vcsigns' {
   ['[C'] = m.normal { function() require('vcsigns').actions.hunk_prev(0, 9999) end, 'Go to first hunk' },
   ['<leader>su'] = m.normal { function() require('vcsigns').actions.hunk_undo(0) end, 'Undo the hunk under the cursor' },
   ['<leader>sd'] = m.normal {
-    function() require('vcsigns').actions.hunk_diff(0) end,
+    function() require('vcsigns').actions.toggle_hunk_diff(0) end,
     'Show diff of hunk under the cursor',
   },
   ['<leader>sf'] = m.normal {
@@ -35,7 +35,7 @@ m.mappings 'vcmarkers' {
     function() require('vcmarkers').actions.select_section(0) end,
     'Select the section under the cursor',
   },
-  ['<space>mf'] = m.normal { function() require('vcmarkers').fold.toggle() end, 'Fold outside markers' },
+  ['<space>mf'] = m.normal { function() require('vcmarkers').fold.toggle(0) end, 'Fold outside markers' },
   ['<space>mc'] = m.normal {
     function() require('vcmarkers').actions.cycle_marker(0) end,
     'Cycle marker representations',
