@@ -45,7 +45,7 @@ m.mappings 'iswap' {
 }
 
 m.mappings 'telescope' {
-  ['<leader>f'] = {
+  ['<space>f'] = {
     f = m.normal { "<cmd>lua require('telescope.builtin').find_files()<cr>", 'Find files' },
     g = m.normal { "<cmd>lua require('telescope.builtin').live_grep()<cr>", 'Live grep' },
     b = m.normal { "<cmd>lua require('telescope.builtin').buffers()<cr>", 'Buffers' },
