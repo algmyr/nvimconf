@@ -3,7 +3,7 @@ local M = {}
 local m = require 'mapping'
 
 local function on_attach(client, bufnr)
-  if client.supports_method 'textDocument/inlayHint' then vim.lsp.inlay_hint.enable(true, { bufnr = 0 }) end
+  if client:supports_method 'textDocument/inlayHint' then vim.lsp.inlay_hint.enable(true, { bufnr = 0 }) end
 
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_set_option_value('omnifunc', 'v:lua.vim.lsp.omnifunc', { buf = bufnr })
