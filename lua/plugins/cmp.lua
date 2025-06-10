@@ -91,7 +91,7 @@ return {
           { name = 'buffer', max_item_count = 5 },
           { name = 'path' },
           {
-            name = "lazydev",
+            name = 'lazydev',
             group_index = 0, -- set group index to 0 to skip loading LuaLS completions
           },
         },

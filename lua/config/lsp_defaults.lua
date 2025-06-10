@@ -8,9 +8,9 @@ local function on_attach(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_set_option_value('omnifunc', 'v:lua.vim.lsp.omnifunc', { buf = bufnr })
 
-  vim.diagnostic.config({ virtual_lines = {
+  vim.diagnostic.config { virtual_lines = {
     current_line = true,
-  } })
+  } }
 
   local bufopts = { buffer = bufnr }
   m.mappings 'LSP' {
@@ -43,8 +43,8 @@ function M.get_default_config()
   config.capabilities = require('cmp_nvim_lsp').default_capabilities()
   config.capabilities.workspace = {
     didChangeWatchedFiles = {
-      dynamicRegistration = false
-    }
+      dynamicRegistration = false,
+    },
   }
   config.inlay_hints = { enabled = true }
   return config

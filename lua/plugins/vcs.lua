@@ -7,7 +7,7 @@ return {
     end,
   },
   {
-    "algmyr/vcsigns.nvim",
+    'algmyr/vcsigns.nvim',
     config = function()
       require('vcsigns').setup {
         target_commit = 1,
@@ -15,9 +15,7 @@ return {
     end,
   },
   {
-    "algmyr/vcmarkers.nvim",
-    config = function()
-      require('vcmarkers').setup {}
-    end,
+    'algmyr/vcmarkers.nvim',
+    config = function() require('vcmarkers').setup {} end,
   },
 }

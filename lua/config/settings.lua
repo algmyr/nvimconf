@@ -47,7 +47,7 @@ function CustomFoldText()
   return summary .. string.rep(' ', padlen) .. lines
 end
 
-vim.o.foldtext = ""
+vim.o.foldtext = ''
 
 vim.o.signcolumn = 'auto:1'
 vim.o.foldcolumn = 'auto:3'
@@ -77,9 +77,9 @@ vim.filetype.add {
   },
 }
 
-vim.cmd([[
+vim.cmd [[
   augroup highlight_yank
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup END
-]])
+]]
