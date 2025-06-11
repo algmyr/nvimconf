@@ -18,6 +18,10 @@ m.mappings 'vcsigns' {
     function() require('vcsigns').actions.show_diff(0) end,
     'Show diff of hunk under the cursor',
   },
+  ['<leader>sf'] = m.normal {
+    function() require('vcsigns').fold.toggle() end,
+    'Fold outside hunks',
+  },
   ['<space>h'] = {
     operator = { function() require('vcsigns.textobj').select_hunk(0) end, 'Hunk under cursor' },
     visual = { function() require('vcsigns.textobj').select_hunk(0) end, 'Hunk under cursor' },
