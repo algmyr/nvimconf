@@ -1,3 +1,4 @@
+" TODO(algmyr): Migrate to lua?
 let g:hideComments = 0
 function! ToggleComments()
     let g:hideComments = 1 - g:hideComments
@@ -8,4 +9,4 @@ function! ToggleComments()
         hi! link Comment Comment
     endif
 endfunction
-map ,c :call ToggleComments()<cr>
+map <space>c :call ToggleComments()<cr>
