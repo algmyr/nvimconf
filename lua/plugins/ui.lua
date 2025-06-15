@@ -35,8 +35,9 @@ return {
     dependencies = {
       'nvim-tree/nvim-web-devicons',
     },
-    config = function() -- {{{
-      local custom_wombat = require 'lualine.themes.wombat'
+    config = function()
+      -- {{{
+      local noice = require 'noice'
 
       local normal = '#cae682'
       local insert = '#fde76e'
@@ -44,14 +45,12 @@ return {
       local replace = '#e5786d'
       local command = normal
 
-      --local inactive_bg = '#1c1c1c'
       local inactive_bg = '#32322f'
       local main_bg = '#242424'
 
       local function gen_theme(accent, bg)
         local black = '#141413'
         local light_bg = '#32322f'
-        --local norm_text = '#E3E0D7'
         return {
           a = { bg = accent, fg = black, gui = 'bold' },
           b = { bg = light_bg, fg = accent },
@@ -59,12 +58,14 @@ return {
         }
       end
 
+      local custom_wombat = require 'lualine.themes.wombat'
       custom_wombat.normal = gen_theme(normal, main_bg)
       custom_wombat.insert = gen_theme(insert, main_bg)
       custom_wombat.visual = gen_theme(visual, main_bg)
       custom_wombat.replace = gen_theme(replace, main_bg)
       custom_wombat.command = gen_theme(command, main_bg)
       custom_wombat.inactive = gen_theme(nil, inactive_bg)
+      -- }}}
 
       require('lualine').setup {
         options = {
@@ -74,22 +75,29 @@ return {
         },
         sections = {
           lualine_a = { 'mode' },
-          lualine_b = { 'branch', 'diff', 'diagnostics' },
-          lualine_c = {
+          lualine_b = {
+            'branch',
             {
-              'filename',
-              path = 2,
+              'diff',
+              diff_color = {
+                added = 'SignAdd',
+                modified = 'SignChange',
+                removed = 'SignDelete',
+              },
+              source = function() return vim.b.vcsigns_stats end,
             },
+            'diagnostics',
           },
+          lualine_c = { 'filename' },
           lualine_x = {
             {
-              require('noice').api.status.mode.get,
-              cond = require('noice').api.status.mode.has,
+              noice.api.status.mode.get,
+              cond = noice.api.status.mode.has,
               color = { fg = '#ff9e64' },
             },
             {
-              require('noice').api.status.search.get,
-              cond = require('noice').api.status.search.has,
+              noice.api.status.search.get,
+              cond = noice.api.status.search.has,
               color = { fg = '#ff9e64' },
             },
             {
@@ -110,12 +118,7 @@ return {
         inactive_sections = {
           lualine_a = {},
           lualine_b = {},
-          lualine_c = {
-            {
-              'filename',
-              path = 2,
-            },
-          },
+          lualine_c = { 'filename' },
           lualine_x = { 'location' },
           lualine_y = {},
           lualine_z = {},
@@ -125,7 +128,7 @@ return {
         inactive_winbar = {},
         extensions = {},
       }
-    end, -- }}}
+    end,
   },
   {
     'smjonas/inc-rename.nvim',
