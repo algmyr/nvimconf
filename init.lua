@@ -26,7 +26,7 @@ require('lazy').setup({
   { import = 'work' },
 }, {
   dev = {
-    path = '~/git',
+    path = '~/jj',
   },
   change_detection = {
     notify = false,
