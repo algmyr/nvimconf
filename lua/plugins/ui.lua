@@ -79,11 +79,6 @@ return {
             'branch',
             {
               'diff',
-              diff_color = {
-                added = 'SignAdd',
-                modified = 'SignChange',
-                removed = 'SignDelete',
-              },
               source = function() return vim.b.vcsigns_stats end,
             },
             'diagnostics',
