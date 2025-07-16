@@ -53,17 +53,31 @@ vim.o.signcolumn = 'auto:1'
 vim.o.foldcolumn = 'auto:3'
 vim.o.fillchars = 'foldclose:╶,foldopen:╭,foldsep:│,fold: '
 
--- Hacky sign stuff.
-local signs = {
-  Info = ' ',
-  Hint = ' ',
-  Warn = ' ',
-  Error = ' ',
+vim.diagnostic.config {
+  virtual_lines = {
+    current_line = true,
+  },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = ' ',
+      [vim.diagnostic.severity.WARN] = ' ',
+      [vim.diagnostic.severity.INFO] = ' ',
+      [vim.diagnostic.severity.HINT] = ' ',
+    },
+    -- linehl = {
+    --   [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
+    --   [vim.diagnostic.severity.WARN] = 'DiagnosticSignWarn',
+    --   [vim.diagnostic.severity.INFO] = 'DiagnosticSignInfo',
+    --   [vim.diagnostic.severity.HINT] = 'DiagnosticSignHint',
+    -- },
+    numhl = {
+      [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
+      [vim.diagnostic.severity.WARN] = 'DiagnosticSignWarn',
+      [vim.diagnostic.severity.INFO] = 'DiagnosticSignInfo',
+      [vim.diagnostic.severity.HINT] = 'DiagnosticSignHint',
+    },
+  },
 }
-for type, icon in pairs(signs) do
-  local hl = 'DiagnosticSign' .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
-end
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   severity_sort = true,
