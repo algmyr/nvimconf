@@ -18,6 +18,8 @@ M.normal = function(t) return { normal = t } end
 
 M.visual = function(t) return { visual = t } end
 
+M.xvisual = function(t) return { xvisual = t } end
+
 M.select = function(t) return { select = t } end
 
 M.insert = function(t) return { insert = t } end
@@ -42,6 +44,7 @@ M.mappings = function(group)
     local function dfs(binding, t)
       make_map(t, 'normal', binding, group)
       make_map(t, 'visual', binding, group)
+      make_map(t, 'xvisual', binding, group)
       make_map(t, 'select', binding, group)
       make_map(t, 'insert', binding, group)
       make_map(t, 'operator', binding, group)
