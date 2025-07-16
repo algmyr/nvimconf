@@ -72,4 +72,15 @@ m.mappings 'misc' {
   ['Q'] = m.normal { '@q', 'Replay the q macro' },
   ---@diagnostic disable-next-line: missing-fields
   ['<space><space>'] = m.normal { function() require('notify').dismiss {} end, 'Dismiss notification' },
+  ['za'] = m.visual { ':FoldAround<cr>', 'Fold around the selection' },
 }
+
+m.user_command('FoldAround', function(opts)
+  local l = opts.line1
+  local r = opts.line2
+  vim.cmd(string.format('%d,%dfold', 0, l - 1))
+  vim.cmd(string.format('%d,%sfold', r + 1, '$'))
+end, {
+  nargs = 0,
+  range = true,
+})
