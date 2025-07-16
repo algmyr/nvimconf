@@ -21,6 +21,10 @@ return {
     config = function()
       require('telescope').setup {
         defaults = {
+          sorting_strategy = 'ascending',
+          layout_config = {
+            prompt_position = 'top',
+          },
           mappings = {
             i = {
               ['<CR>'] = select_one_or_multi,
