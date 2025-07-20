@@ -1,10 +1,7 @@
 vim.g.mapleader = ','
 vim.g.maplocalleader = '-'
 
--- This is a hack, but apparently if you don't source early
--- you run into issues with packages using the default config.
-require 'config.mappings'
-require 'config.settings'
+require 'config'
 
 package.path = package.path .. ';~/.config/nvim/lua/%.lua'
 
