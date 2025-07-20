@@ -17,11 +17,11 @@ vim.opt.list = true
 vim.opt.updatetime = 1000
 vim.opt.wrap = false
 vim.opt.scrolloff = 3
-vim.opt.backspace = {'indent', 'eol', 'start'}
+vim.opt.backspace = { 'indent', 'eol', 'start' }
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-vim.opt.wildmode = {'longest', 'list', 'full'}
-vim.opt.completeopt = {'noinsert', 'menuone', 'noselect'}
+vim.opt.wildmode = { 'longest', 'list', 'full' }
+vim.opt.completeopt = { 'noinsert', 'menuone', 'noselect' }
 
 -- Editor looks
 vim.opt.cmdheight = 2

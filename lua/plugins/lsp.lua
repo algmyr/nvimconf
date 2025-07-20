@@ -8,8 +8,11 @@ return {
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
       m.mappings 'LSP' {
         ['<space>e'] = m.normal { vim.diagnostic.open_float, 'Open diagnostic float' },
-        ['[d'] = m.normal { function() vim.diagnostic.jump({count=-1, float=true}) end, 'Go to previous diagnostic' },
-        [']d'] = m.normal { function() vim.diagnostic.jump({count=1, float=true}) end, 'Go to next diagnostic' },
+        ['[d'] = m.normal {
+          function() vim.diagnostic.jump { count = -1, float = true } end,
+          'Go to previous diagnostic',
+        },
+        [']d'] = m.normal { function() vim.diagnostic.jump { count = 1, float = true } end, 'Go to next diagnostic' },
         ['<space>q'] = m.normal { vim.diagnostic.setloclist, 'Add diagnostics to loclist' },
       }
     end,

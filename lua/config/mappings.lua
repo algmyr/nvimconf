@@ -29,8 +29,14 @@ m.mappings 'vcsigns' {
 }
 
 m.mappings 'vcmarkers' {
-  ['<space>m]'] = m.normal { function() require('vcmarkers').actions.next_marker(0, vim.v.count1) end, 'Go to next marker' },
-  ['<space>m['] = m.normal { function() require('vcmarkers').actions.prev_marker(0, vim.v.count1) end, 'Go to previous marker' },
+  ['<space>m]'] = m.normal {
+    function() require('vcmarkers').actions.next_marker(0, vim.v.count1) end,
+    'Go to next marker',
+  },
+  ['<space>m['] = m.normal {
+    function() require('vcmarkers').actions.prev_marker(0, vim.v.count1) end,
+    'Go to previous marker',
+  },
   ['<space>ms'] = m.normal {
     function() require('vcmarkers').actions.select_section(0) end,
     'Select the section under the cursor',
