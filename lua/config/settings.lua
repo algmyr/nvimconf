@@ -1,35 +1,40 @@
 vim.g.python_recommended_style = 0
 vim.g.rust_recommended_style = 0
 
-vim.o.clipboard = 'unnamedplus'
-vim.o.showmode = false
+vim.opt.clipboard = 'unnamedplus'
+vim.opt.showmode = false
 
 -- Indentation
-vim.o.expandtab = true
-vim.o.tabstop = 2
-vim.o.shiftwidth = 0 -- use tabstop
-vim.o.softtabstop = -1 -- use shiftwidth
-vim.o.breakindent = true
-vim.o.listchars = 'tab:| ,'
-vim.o.list = true
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 0 -- use tabstop
+vim.opt.softtabstop = -1 -- use shiftwidth
+vim.opt.breakindent = true
+vim.opt.listchars = 'tab:| ,'
+vim.opt.list = true
 
 -- Editor behavior
-vim.o.updatetime = 1000
-vim.o.wrap = false
-vim.o.scrolloff = 3
-vim.o.backspace = 'indent,eol,start'
-vim.o.splitright = true
-vim.o.splitbelow = true
-vim.o.wildmode = 'longest,list,full'
-vim.o.completeopt = 'noinsert,menuone,noselect'
+vim.opt.updatetime = 1000
+vim.opt.wrap = false
+vim.opt.scrolloff = 3
+vim.opt.backspace = {'indent', 'eol', 'start'}
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.wildmode = {'longest', 'list', 'full'}
+vim.opt.completeopt = {'noinsert', 'menuone', 'noselect'}
 
 -- Editor looks
-vim.o.cmdheight = 2
-vim.o.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkon1'
+vim.opt.cmdheight = 2
+vim.opt.guicursor = {
+  'n-v-c-sm:block',
+  'i-ci-ve:ver25',
+  'r-cr-o:hor20',
+  'a:blinkon1',
+}
 
 -- Input
-vim.o.mouse = 'a'
-vim.o.mousemodel = 'extend'
+vim.opt.mouse = 'a'
+vim.opt.mousemodel = 'extend'
 
 function CustomFoldText()
   local line = vim.fn.getline(vim.v.foldstart)
@@ -47,11 +52,16 @@ function CustomFoldText()
   return summary .. string.rep(' ', padlen) .. lines
 end
 
-vim.o.foldtext = ''
+vim.opt.foldtext = ''
 
-vim.o.signcolumn = 'auto:1'
-vim.o.foldcolumn = 'auto:3'
-vim.o.fillchars = 'foldclose:╶,foldopen:╭,foldsep:│,fold: '
+vim.opt.signcolumn = 'auto:1'
+vim.opt.foldcolumn = 'auto:3'
+vim.opt.fillchars = {
+  fold = ' ',
+  foldopen = '╭',
+  foldclose = '╶',
+  foldsep = '│',
+}
 
 vim.diagnostic.config {
   virtual_lines = {
