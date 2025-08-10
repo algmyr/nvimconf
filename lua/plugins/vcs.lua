@@ -14,4 +14,10 @@ return {
   {
     'algmyr/vclib.nvim',
   },
+  {
+    'acarapetis/nvim-treesitter-jjconfig',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    lazy = false,
+    opts = { ensure_installed = true },
+  },
 }
