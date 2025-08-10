@@ -7,11 +7,14 @@ return {
     cond = not vim.g.started_by_firenvim,
     config = function() -- {{{
       require 'mapping'
+      local bufferline = require 'bufferline'
 
-      require('bufferline').setup {
+      bufferline.setup {
         options = {
+          style_preset = bufferline.style_preset.no_italic,
           diagnostics = 'nvim_lsp',
           separator_style = 'slant',
+          show_buffer_close_icons = false,
         },
       }
 
