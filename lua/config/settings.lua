@@ -23,6 +23,12 @@ vim.opt.splitbelow = true
 vim.opt.wildmode = { 'longest', 'list', 'full' }
 vim.opt.completeopt = { 'noinsert', 'menuone', 'noselect' }
 
+vim.opt.diffopt = {
+  'algorithm:histogram',
+  'foldcolumn:0',
+  'filler',
+}
+
 -- Editor looks
 vim.opt.cmdheight = 2
 vim.opt.guicursor = {
