@@ -79,6 +79,7 @@ m.mappings 'misc' {
   ---@diagnostic disable-next-line: missing-fields
   ['<space><space>'] = m.normal { function() require('notify').dismiss {} end, 'Dismiss notification' },
   ['za'] = m.visual { ':FoldAround<cr>', 'Fold around the selection' },
+  ['<space>c'] = m.normal { require('custom').toggle_comments, 'Toggle comment visibility' },
 }
 
 m.user_command('FoldAround', function(opts)
