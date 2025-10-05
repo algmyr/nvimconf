@@ -29,3 +29,9 @@ require('lazy').setup({
     notify = false,
   },
 })
+
+-- These were only added in nvim 0.12
+if vim.fn.has 'nvim-0.12' == 1 then
+  vim.cmd.packadd 'nvim.undotree'
+  vim.cmd.packadd 'nvim.difftool'
+end
