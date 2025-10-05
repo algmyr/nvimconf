@@ -80,10 +80,7 @@ return {
           lualine_a = { 'mode' },
           lualine_b = {
             'branch',
-            {
-              'diff',
-              source = function() return vim.b.vcsigns_stats end,
-            },
+            require('vcsigns.info').lualine_module(),
             'diagnostics',
           },
           lualine_c = { 'filename' },
