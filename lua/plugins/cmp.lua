@@ -34,6 +34,22 @@ return {
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
       },
+      cmdline = {
+        keymap = {
+          ['/'] = {
+            function(cmp)
+              -- Accept directory path completions on '/'.
+              local item = cmp.get_selected_item()
+              if item and item.label:sub(-1) == '/' then
+                cmp.select_and_accept()
+                return cmp.show()
+              end
+            end,
+            'fallback',
+          },
+        },
+        completion = { menu = { auto_show = true } },
+      },
 
       signature = {
         enabled = true,
