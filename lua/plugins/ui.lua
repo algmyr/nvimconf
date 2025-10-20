@@ -30,7 +30,24 @@ return {
   },
   {
     'luukvbaal/statuscol.nvim',
-    config = function() require('statuscol').setup() end,
+    config = function()
+      require('statuscol').setup({
+        clickhandlers = {
+          vcsigns = function(args)
+            local line = args.mousepos.line
+            if args.button == 'l' then
+              -- Left click
+            elseif args.button == 'm' then
+              -- Middle click
+              require('vcsigns').actions.hunk_undo(0, { line, line })
+            elseif args.button == 'r' then
+              -- Right click
+              require('vcsigns').actions.toggle_fold(0)
+            end
+          end,
+        },
+      })
+    end,
   },
   {
     'nvim-lualine/lualine.nvim',
