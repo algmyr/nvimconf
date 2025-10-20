@@ -29,6 +29,7 @@ return {
 
       completion = {
         documentation = { auto_show = true },
+        list = { selection = { preselect = false } },
       },
 
       sources = {
@@ -48,7 +49,10 @@ return {
             'fallback',
           },
         },
-        completion = { menu = { auto_show = true } },
+        completion = {
+          menu = { auto_show = true },
+          list = { selection = { preselect = false } },
+        },
       },
 
       signature = {
