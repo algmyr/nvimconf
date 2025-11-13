@@ -17,9 +17,6 @@ return {
     config = function() require('vcmarkers').setup {} end,
   },
   {
-    'algmyr/vclib.nvim',
-  },
-  {
     'acarapetis/nvim-treesitter-jjconfig',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     lazy = false,
