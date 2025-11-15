@@ -13,10 +13,13 @@ m.mappings 'vcsigns' {
   ['[c'] = m.normal { function() require('vcsigns.actions').hunk_prev(0, vim.v.count1) end, 'Go to previous hunk' },
   [']C'] = m.normal { function() require('vcsigns.actions').hunk_next(0, 9999) end, 'Go to last hunk' },
   ['[C'] = m.normal { function() require('vcsigns.actions').hunk_prev(0, 9999) end, 'Go to first hunk' },
-  ['<leader>su'] = m.normal { function() require('vcsigns.actions').hunk_undo(0) end, 'Undo the hunk under the cursor' },
+  ['<leader>su'] = {
+    normal = { function() require('vcsigns.actions').hunk_undo(0) end, 'Undo the hunk under the cursor' },
+    visual = { function() require('vcsigns.actions').hunk_undo(0) end, 'Undo the hunks in the selection' },
+  },
   ['<leader>sd'] = m.normal {
     function() require('vcsigns.actions').toggle_hunk_diff(0) end,
-    'Show diff of hunk under the cursor',
+    'Toggle inline hunk diffs in the current buffer',
   },
   ['<leader>sf'] = m.normal {
     function() require('vcsigns.fold').toggle(0) end,
