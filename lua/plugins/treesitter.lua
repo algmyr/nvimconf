@@ -33,7 +33,6 @@ return {
       }
     end, -- }}}
   },
-  'nvim-treesitter/playground',
   {
     'mizlan/iswap.nvim',
     event = 'VeryLazy',
