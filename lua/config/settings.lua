@@ -99,8 +99,6 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagn
   severity_sort = true,
 })
 
-vim.g.signify_priority = 2
-
 vim.filetype.add {
   extension = {
     frag = 'glsl',
