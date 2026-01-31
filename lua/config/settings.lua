@@ -22,6 +22,9 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.wildmode = { 'longest', 'list', 'full' }
 vim.opt.completeopt = { 'noinsert', 'menuone', 'noselect' }
+vim.opt.backup = false
+vim.opt.writebackup = false
+-- vim.opt.backupcopy = 'yes'
 
 vim.opt.diffopt = {
   'algorithm:histogram',
