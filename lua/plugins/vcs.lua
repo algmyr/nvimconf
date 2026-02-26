@@ -2,6 +2,7 @@ return {
   {
     'algmyr/vcsigns.nvim',
     config = function()
+      ---@diagnostic disable-next-line: missing-fields, param-type-mismatch
       require('vcsigns').setup {
         target_commit = 1,
         diff_opts = {
