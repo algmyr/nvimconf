@@ -41,8 +41,12 @@ m.mappings 'vcmarkers' {
     'Go to previous marker',
   },
   ['<space>ms'] = m.normal {
-    function() require('vcmarkers').actions.select_section(0) end,
-    'Select the section under the cursor',
+    function() require('vcmarkers').actions.select_section_verbatim(0) end,
+    'Replace marker with section contents',
+  },
+  ['<space>mS'] = m.normal {
+    function() require('vcmarkers').actions.select_all_plus(0) end,
+    'Replace marker with plus parts of marker',
   },
   ['<space>mf'] = m.normal { function() require('vcmarkers').fold.toggle(0) end, 'Fold outside markers' },
   ['<space>mc'] = m.normal {
