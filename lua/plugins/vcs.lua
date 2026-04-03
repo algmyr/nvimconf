@@ -1,6 +1,9 @@
 return {
   {
     'algmyr/vcsigns.nvim',
+    dependencies = {
+      'algmyr/vclib.nvim',
+    },
     config = function()
       ---@diagnostic disable-next-line: missing-fields, param-type-mismatch
       require('vcsigns').setup {
@@ -15,6 +18,9 @@ return {
   },
   {
     'algmyr/vcmarkers.nvim',
+    dependencies = {
+      'algmyr/vclib.nvim',
+    },
     config = function() require('vcmarkers').setup {} end,
   },
   {
