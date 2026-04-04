@@ -1,37 +1,39 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    event = 'VeryLazy',
-    build = ':TSUpdate',
-    config = function() -- {{{
-      ---@diagnostic disable-next-line: missing-fields
-      require('nvim-treesitter.configs').setup {
-        highlight = {
-          enable = true,
-          disable = {},
-          custom_captures = {
-            -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
-            ['foo.bar'] = 'Identifier',
-          },
-        },
-        ensure_installed = {
-          'vimdoc',
-          'luadoc',
-          'vim',
-          'lua',
-          'markdown',
-        },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = '<C-n>',
-            node_incremental = '<C-n>',
-            scope_incremental = '<C-s>',
-            node_decremental = '<C-p>',
-          },
-        },
+    lazy = false,
+    build = function(ev)
+      if not ev.data.active then vim.cmd.packadd 'nvim-treesitter' end
+      vim.cmd 'TSUpdate'
+    end,
+    config = function()
+      local treesitter = require 'nvim-treesitter'
+      treesitter.setup()
+
+      local ensure_installed = {
+        'vimdoc',
+        'luadoc',
+        'vim',
+        'lua',
+        'markdown',
       }
-    end, -- }}}
+
+      treesitter.install(ensure_installed):wait()
+
+      local installed = treesitter.get_installed()
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = installed,
+        callback = function()
+          -- syntax highlighting, provided by Neovim
+          vim.treesitter.start()
+          -- folds, provided by Neovim (I don't like folds)
+          -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+          -- vim.wo.foldmethod = 'expr'
+          -- indentation, provided by nvim-treesitter
+          -- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
+      })
+    end,
   },
   {
     'mizlan/iswap.nvim',

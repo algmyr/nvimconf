@@ -212,7 +212,23 @@ function M.process_plugins(plugin_dirs, dev_path)
       return
     end
     -- Merge with existing.
-    plugins[plugin.name] = vim.tbl_deep_extend('force', cur, plugin)
+    plugins[plugin.name] = vim.tbl_deep_extend(function(key, old, new)
+      if not old and new then
+        return old or new
+      end
+      if type(old) == 'table' and type(new) == 'table' then
+        if #old == 0 then return new end
+        return old
+      end
+      if key == 'priority' then
+        if old > new then
+          return old
+        else
+          return new
+        end
+      end
+      return new
+    end, cur, plugin)
   end
   for _, plugin in ipairs(vim.deepcopy(all_plugins)) do
     handle_plugin_spec(plugin, add_plugin, dev_path)
