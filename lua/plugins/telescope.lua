@@ -54,7 +54,7 @@ return {
     dependencies = {
       'nvim-telescope/telescope.nvim',
     },
-    build = 'make',
+    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install',
   },
   'nvim-telescope/telescope-ui-select.nvim',
 }
