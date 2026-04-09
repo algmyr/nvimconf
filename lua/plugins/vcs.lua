@@ -3,6 +3,7 @@ return {
     'algmyr/vcsigns.nvim',
     dependencies = {
       'algmyr/vclib.nvim',
+      'lewis6991/async.nvim',
     },
     config = function()
       ---@diagnostic disable-next-line: missing-fields, param-type-mismatch
