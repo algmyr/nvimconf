@@ -7,7 +7,7 @@ return {
     lazy = false, -- This plugin is already lazy
   },
   {
-    'williamboman/mason-lspconfig.nvim',
+    'mason-org/mason-lspconfig.nvim',
     dependencies = {
       'mrcjkb/rustaceanvim',
       'mason-org/mason.nvim',
