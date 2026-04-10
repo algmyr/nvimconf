@@ -3,7 +3,7 @@ local m = require 'mapping'
 return {
   {
     'neovim/nvim-lspconfig',
-    dependencies = { 'williamboman/mason.nvim' },
+    dependencies = { 'mason-org/mason.nvim' },
     config = function()
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
       m.mappings 'LSP' {

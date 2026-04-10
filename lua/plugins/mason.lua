@@ -1,5 +1,5 @@
 return {
-  { 'williamboman/mason.nvim', opts = {} },
+  { 'mason-org/mason.nvim', opts = {} },
   {
     -- TODO(algmyr): Look into the overrides in the readme
     'mrcjkb/rustaceanvim',
@@ -10,7 +10,7 @@ return {
     'williamboman/mason-lspconfig.nvim',
     dependencies = {
       'mrcjkb/rustaceanvim',
-      'williamboman/mason.nvim',
+      'mason-org/mason.nvim',
     },
     config = function() -- {{{
       -- Auto setup
