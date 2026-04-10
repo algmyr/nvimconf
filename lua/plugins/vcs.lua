@@ -14,6 +14,9 @@ return {
           linematch = 60,
           indent_heuristic = true,
         },
+        signs = {
+          priority = 100,
+        }
       }
     end,
   },

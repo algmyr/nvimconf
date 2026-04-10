@@ -63,7 +63,7 @@ end
 
 vim.opt.foldtext = ''
 
-vim.opt.signcolumn = 'auto:1'
+vim.opt.signcolumn = 'auto:2'
 vim.opt.foldcolumn = 'auto:3'
 vim.opt.fillchars = {
   fold = ' ',
