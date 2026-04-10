@@ -85,6 +85,21 @@ return {
       custom_wombat.inactive = gen_theme(nil, inactive_bg)
       -- }}}
 
+      local function macro_state()
+        local recording_register = vim.fn.reg_recording()
+        if recording_register == '' then return '' end
+        return 'recording @' .. recording_register
+      end
+
+      local function search_result()
+        if vim.v.hlsearch == 0 then return '' end
+        local last_search = vim.fn.getreg '/'
+        if not last_search or last_search == '' then return '' end
+        local searchcount = vim.fn.searchcount { maxcount = 9999 }
+        if searchcount.total == 0 then return '' end
+        return last_search .. ' [' .. searchcount.current .. '/' .. searchcount.total .. ']'
+      end
+
       require('lualine').setup {
         options = {
           theme = custom_wombat,
@@ -101,13 +116,11 @@ return {
           lualine_c = { 'filename' },
           lualine_x = {
             {
-              noice.api.status.mode.get,
-              cond = noice.api.status.mode.has,
+              macro_state,
               color = { fg = '#ff9e64' },
             },
             {
-              noice.api.status.search.get,
-              cond = noice.api.status.search.has,
+              search_result,
               color = { fg = '#ff9e64' },
             },
             {
