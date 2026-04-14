@@ -2,8 +2,15 @@ local m = require 'mapping'
 
 return {
   {
+    'nvim-mini/mini.icons',
+    config = function()
+      require('mini.icons').setup {}
+      MiniIcons.mock_nvim_web_devicons()
+    end,
+  },
+  {
     'akinsho/bufferline.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = { 'nvim-mini/mini.icons' },
     config = function() -- {{{
       require 'mapping'
       local bufferline = require 'bufferline'
@@ -51,7 +58,7 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     dependencies = {
-      'nvim-tree/nvim-web-devicons',
+      'nvim-mini/mini.icons',
     },
     config = function()
       -- {{{
