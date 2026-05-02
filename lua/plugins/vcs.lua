@@ -16,7 +16,7 @@ return {
         },
         signs = {
           priority = 100,
-        }
+        },
       }
     end,
   },

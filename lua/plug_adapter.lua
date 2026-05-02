@@ -213,9 +213,7 @@ function M.process_plugins(plugin_dirs, dev_path)
     end
     -- Merge with existing.
     plugins[plugin.name] = vim.tbl_deep_extend(function(key, old, new)
-      if not old and new then
-        return old or new
-      end
+      if not old and new then return old or new end
       if type(old) == 'table' and type(new) == 'table' then
         if #old == 0 then return new end
         return old
