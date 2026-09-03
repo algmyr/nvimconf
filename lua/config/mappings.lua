@@ -22,7 +22,7 @@ m.mappings 'vcsigns' {
     'Toggle inline hunk diffs in the current buffer',
   },
   ['<leader>sf'] = m.normal {
-    function() require('vcsigns.fold').toggle(0) end,
+    function() require('vcsigns.actions').toggle_fold(0) end,
     'Fold outside hunks',
   },
   ['<space>h'] = {
