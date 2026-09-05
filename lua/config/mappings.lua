@@ -70,6 +70,13 @@ m.mappings 'telescope' {
   },
 }
 
+m.mappings 'buffy' {
+  ['<space>b'] = m.normal { function() require('buffy').open_picker { quickpick = true } end, 'Toggle buffy' },
+  ['<space><space>b'] = m.normal { function() require('buffy').add_current() end, 'Add buffer' },
+  ['<leader>n'] = m.normal { function() require('buffy').prev() end, 'Previous buffer' },
+  ['<leader>m'] = m.normal { function() require('buffy').next() end, 'Next buffer' },
+}
+
 m.mappings 'misc' {
   [';'] = {
     normal = { ':', '', { silent = false } },

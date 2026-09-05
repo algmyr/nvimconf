@@ -9,30 +9,22 @@ return {
     end,
   },
   {
-    'akinsho/bufferline.nvim',
-    dependencies = { 'nvim-mini/mini.icons' },
-    config = function() -- {{{
-      require 'mapping'
-      local bufferline = require 'bufferline'
-
-      bufferline.setup {
-        options = {
-          style_preset = bufferline.style_preset.no_italic,
-          diagnostics = 'nvim_lsp',
-          separator_style = 'slant',
-          show_buffer_close_icons = false,
+    'algmyr/buffy.nvim',
+    dependencies = {},
+    config = function()
+      require('buffy').setup {
+        max_height = 20,
+        auto_track = true,
+        picker = {
+          border = 'horizontal',
+          position = 'center',
+        },
+        peek = {
+          border = 'horizontal',
+          position = 'center',
         },
       }
-
-      m.mappings 'bufferline' {
-        ['<leader>'] = {
-          n = m.normal { '<cmd>BufferLineCyclePrev<cr>', 'Go to buffer left' },
-          m = m.normal { '<cmd>BufferLineCycleNext<cr>', 'Go to buffer right' },
-          N = m.normal { '<cmd>BufferLineMovePrev<cr>', 'Move buffer left' },
-          M = m.normal { '<cmd>BufferLineMoveNext<cr>', 'Move buffer right' },
-        },
-      }
-    end, -- }}}
+    end,
   },
   {
     'luukvbaal/statuscol.nvim',
