@@ -198,9 +198,13 @@ function M.process_plugins(plugin_dirs, dev_path)
   -- Require all plugin files and merge into one big list.
   local all_plugins = {}
   for _, file in ipairs(all_plugin_files) do
-    local plugins = dofile(file)
-    for _, plugin in ipairs(plugins) do
-      table.insert(all_plugins, plugin)
+    local ok, plugins = pcall(dofile, file)
+    if ok then
+      for _, plugin in ipairs(plugins) do
+        table.insert(all_plugins, plugin)
+      end
+    else
+      vim.notify('Failed to load plugin file: ' .. file .. '\n' .. plugins, vim.log.levels.ERROR)
     end
   end
 
@@ -229,7 +233,11 @@ function M.process_plugins(plugin_dirs, dev_path)
     end, cur, plugin)
   end
   for _, plugin in ipairs(vim.deepcopy(all_plugins)) do
-    handle_plugin_spec(plugin, add_plugin, dev_path)
+    local ok, err = pcall(handle_plugin_spec, plugin, add_plugin, dev_path)
+    if not ok then
+      local name = plugin[1] or plugin.name or 'unknown'
+      vim.notify('Failed to process plugin spec: ' .. name .. '\n' .. err, vim.log.levels.ERROR)
+    end
   end
 
   local filtered = vim
@@ -246,29 +254,32 @@ end
 ---@param plugin PluginSpec
 local function maybe_build(ev, plugin)
   if plugin.data.build then
-    local path = ev.data.path
-    local name = plugin.name
-    local build = plugin.data.build
-    if type(build) == 'string' then
-      if build:sub(1, 1) == ':' then
-        -- Vim cmd.
-        local cmd = vim.api.nvim_parse_cmd(build:sub(2), {}) --[[@as vim.api.keyset.cmd]]
-        print(vim.api.nvim_cmd(cmd, { output = true }))
+    local ok, err = pcall(function()
+      local path = ev.data.path
+      local name = plugin.name
+      local build = plugin.data.build
+      if type(build) == 'string' then
+        if build:sub(1, 1) == ':' then
+          -- Vim cmd.
+          local cmd = vim.api.nvim_parse_cmd(build:sub(2), {}) --[[@as vim.api.keyset.cmd]]
+          print(vim.api.nvim_cmd(cmd, { output = true }))
+        else
+          -- Shell cmd.
+          print('Running build command for ' .. name .. ': ' .. build)
+          print('In directory: ' .. path)
+          local result = vim
+            .system({ 'bash', '-c', build }, {
+              cwd = path,
+            })
+            :wait()
+          if result.code ~= 0 then error('Build command failed for ' .. name .. ': ' .. result.stderr) end
+        end
       else
-        -- Shell cmd.
-        print('Running build command for ' .. name .. ': ' .. build)
-        print('In directory: ' .. path)
-        local result = vim
-          .system({ 'bash', '-c', build }, {
-            cwd = path,
-          })
-          :wait()
-        if result.code ~= 0 then error('Build command failed for ' .. name .. ': ' .. result.stderr) end
+        -- Assume it's a function.
+        build(ev)
       end
-    else
-      -- Assume it's a function.
-      build(ev)
-    end
+    end)
+    if not ok then vim.notify('Build failed for ' .. plugin.name .. '\n' .. err, vim.log.levels.ERROR) end
   end
 end
 
@@ -279,7 +290,10 @@ function M.load_plugins_from_dirs(plugin_dirs, dev_path)
 
   -- Run initializtion.
   for _, plugin in pairs(plugin_specs) do
-    if plugin.data.init then plugin.data.init(plugin) end
+    if plugin.data.init then
+      local ok, err = pcall(plugin.data.init, plugin)
+      if not ok then vim.notify('Failed to run init for ' .. plugin.name .. '\n' .. err, vim.log.levels.ERROR) end
+    end
   end
 
   -- Register build command on plugin changes.
@@ -302,7 +316,10 @@ function M.load_plugins_from_dirs(plugin_dirs, dev_path)
   for _, name in ipairs(topo_order) do
     -- Not quite correct, but good enough.
     local plugin = plugin_specs[name]
-    if plugin.data.config then plugin.data.config(plugin, {}) end
+    if plugin.data.config then
+      local ok, err = pcall(plugin.data.config, plugin, {})
+      if not ok then vim.notify('Failed to run config for ' .. plugin.name .. '\n' .. err, vim.log.levels.ERROR) end
+    end
   end
 end
 
