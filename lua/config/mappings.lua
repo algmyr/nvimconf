@@ -2,32 +2,32 @@ local m = require 'mapping'
 
 m.mappings 'vcsigns' {
   ['[r'] = m.normal {
-    function() require('vcsigns').actions.target_older_commit(0, vim.v.count1) end,
+    function() require('vcsigns').actions.target_older_commit { steps = vim.v.count1 } end,
     'Move diff target back',
   },
   [']r'] = m.normal {
-    function() require('vcsigns').actions.target_newer_commit(0, vim.v.count1) end,
+    function() require('vcsigns').actions.target_newer_commit { steps = vim.v.count1 } end,
     'Move diff target forward',
   },
-  [']c'] = m.normal { function() require('vcsigns.actions').hunk_next(0, vim.v.count1) end, 'Go to next hunk' },
-  ['[c'] = m.normal { function() require('vcsigns.actions').hunk_prev(0, vim.v.count1) end, 'Go to previous hunk' },
-  [']C'] = m.normal { function() require('vcsigns.actions').hunk_next(0, 9999) end, 'Go to last hunk' },
-  ['[C'] = m.normal { function() require('vcsigns.actions').hunk_prev(0, 9999) end, 'Go to first hunk' },
+  [']c'] = m.normal { function() require('vcsigns.actions').hunk_next { count = vim.v.count1 } end, 'Go to next hunk' },
+  ['[c'] = m.normal { function() require('vcsigns.actions').hunk_prev { count = vim.v.count1 } end, 'Go to previous hunk' },
+  [']C'] = m.normal { function() require('vcsigns.actions').hunk_next { count = 9999 } end, 'Go to last hunk' },
+  ['[C'] = m.normal { function() require('vcsigns.actions').hunk_prev { count = 9999 } end, 'Go to first hunk' },
   ['<leader>su'] = {
-    normal = { function() require('vcsigns.actions').hunk_undo(0) end, 'Undo the hunk under the cursor' },
-    visual = { function() require('vcsigns.actions').hunk_undo(0) end, 'Undo the hunks in the selection' },
+    normal = { function() require('vcsigns.actions').hunk_undo() end, 'Undo the hunk under the cursor' },
+    visual = { function() require('vcsigns.actions').hunk_undo() end, 'Undo the hunks in the selection' },
   },
   ['<leader>sd'] = m.normal {
-    function() require('vcsigns.actions').toggle_hunk_diff(0) end,
+    function() require('vcsigns.actions').toggle_hunk_diff() end,
     'Toggle inline hunk diffs in the current buffer',
   },
   ['<leader>sf'] = m.normal {
-    function() require('vcsigns.actions').toggle_fold(0) end,
+    function() require('vcsigns.actions').toggle_fold() end,
     'Fold outside hunks',
   },
   ['<space>h'] = {
-    operator = { function() require('vcsigns.textobj').select_hunk(0) end, 'Hunk under cursor' },
-    normal = { function() require('vcsigns.textobj').select_hunk(0) end, 'Select hunk under cursor' },
+    operator = { function() require('vcsigns.textobj').select_hunk() end, 'Hunk under cursor' },
+    normal = { function() require('vcsigns.textobj').select_hunk() end, 'Select hunk under cursor' },
   },
 }
 
